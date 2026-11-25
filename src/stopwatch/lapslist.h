@@ -11,7 +11,7 @@
 #include <optional>
 #include <vector>
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 class Label;
 }
 
@@ -22,12 +22,12 @@ struct LapExtremes;
 // The laps, newest first: the lap running now on top, then the completed
 // ones, the fastest in green and the slowest in red. A new lap slides the
 // list down a row and fades in at the top.
-class LapsList : public cutefish::ui::View
+class LapsList : public properdesktop::ui::View
 {
 public:
     static constexpr double RowHeight = 44;
 
-    explicit LapsList(cutefish::ui::Window* window);
+    explicit LapsList(properdesktop::ui::Window* window);
     ~LapsList() override;
 
     // The completed laps, the first first; the running lap's time, or a
@@ -41,25 +41,25 @@ public:
 
     size_t rowCount() const { return m_rows.size(); }
 
-    cutefish::ui::SizeF sizeHint() const override;
+    properdesktop::ui::SizeF sizeHint() const override;
     double heightForWidth(double) const override { return sizeHint().height; }
 
 protected:
     void layout() override;
-    void paint(cutefish::ui::Painter& painter) override;
+    void paint(properdesktop::ui::Painter& painter) override;
 
 private:
     struct Row
     {
-        cutefish::ui::View* view = nullptr;
-        cutefish::ui::Label* name = nullptr;
-        cutefish::ui::Label* time = nullptr;
+        properdesktop::ui::View* view = nullptr;
+        properdesktop::ui::Label* name = nullptr;
+        properdesktop::ui::Label* time = nullptr;
     };
 
     Row makeRow();
     void setRow(Row& row, size_t lapNumber, int64_t ns, int mark);
 
-    cutefish::ui::Window* m_window;
+    properdesktop::ui::Window* m_window;
     std::vector<Row> m_rows;
     bool m_hasCurrent = false;
     double m_left = 0;

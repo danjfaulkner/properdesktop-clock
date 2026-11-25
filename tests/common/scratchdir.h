@@ -13,7 +13,7 @@ class ScratchDir
 public:
     ScratchDir()
     {
-        std::string pattern = (std::filesystem::temp_directory_path() / "cutefish-clock-XXXXXX").string();
+        std::string pattern = (std::filesystem::temp_directory_path() / "properdesktop-clock-XXXXXX").string();
         if (mkdtemp(pattern.data()))
             m_path = pattern;
     }

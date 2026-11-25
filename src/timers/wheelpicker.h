@@ -14,12 +14,12 @@ namespace clockapp {
 class DurationPicker : public WheelPicker
 {
 public:
-    explicit DurationPicker(cutefish::ui::Window* window);
+    explicit DurationPicker(properdesktop::ui::Window* window);
 
     int64_t durationMs() const;
     void setDurationMs(int64_t ms, bool animate = false);
 
-    cutefish::ui::SizeF sizeHint() const override;
+    properdesktop::ui::SizeF sizeHint() const override;
 };
 
 } // namespace clockapp

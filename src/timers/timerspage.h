@@ -14,7 +14,7 @@
 #include <string>
 #include <vector>
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 class HeaderBackdrop;
 class ScrollView;
 }
@@ -60,7 +60,7 @@ public:
 
 protected:
     void layout() override;
-    void paint(cutefish::ui::Painter& painter) override;
+    void paint(properdesktop::ui::Painter& painter) override;
 
 private:
     class Grid;
@@ -73,7 +73,7 @@ private:
 
     PageContext& m_context;
     ClockStore& m_store;
-    cutefish::base::Subscription m_storeChanged;
+    properdesktop::base::Subscription m_storeChanged;
     std::vector<timermath::Recent> m_recents;
     bool m_composing = true;
     bool m_current = false;
@@ -81,11 +81,11 @@ private:
     std::string m_fillIn;
     int m_escapeShortcut = 0;
 
-    cutefish::ui::ScrollView* m_gridView = nullptr;
+    properdesktop::ui::ScrollView* m_gridView = nullptr;
     Grid* m_grid = nullptr;
     TimerComposer* m_composer = nullptr;
     RecentsPanel* m_recentsPanel = nullptr;
-    cutefish::ui::HeaderBackdrop* m_backdrop = nullptr;
+    properdesktop::ui::HeaderBackdrop* m_backdrop = nullptr;
     // From 0, the cards, to 1, the composer.
     std::unique_ptr<Glide> m_modeFade;
     // From 0, no recents column, to 1, the column in place.

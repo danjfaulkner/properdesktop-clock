@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: cutefish-clock\n"
-"Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
+"Project-Id-Version: properdesktop-clock\n"
+"Report-Msgid-Bugs-To: https://github.com/danjfaulkner\n"
 "POT-Creation-Date: 2026-11-23 23:17+0800\n"
 "PO-Revision-Date: 2026-11-21 01:08+0800\n"
 "Last-Translator: \n"
@@ -161,7 +161,7 @@ msgstr "Ánh sáng"
 msgid "Dawn"
 msgstr "Bình minh"
 
-#: src/clockwindow.cpp cutefish-clock.desktop
+#: src/clockwindow.cpp properdesktop-clock.desktop
 msgid "Clock"
 msgstr "Đồng hồ"
 
@@ -435,15 +435,15 @@ msgstr "{hours}:{minutes} GIỜ"
 msgid "{day}, {offset}"
 msgstr "{day}, {offset}"
 
-#: cutefish-clock.desktop
+#: properdesktop-clock.desktop
 msgid "World clocks, alarms, a stopwatch and timers"
 msgstr "Giờ thế giới, báo thức, bấm giờ và hẹn giờ"
 
-#: cutefish-clock.desktop
+#: properdesktop-clock.desktop
 msgid "Clock;Time;Alarm;Timer;Stopwatch;World;Time Zone;"
 msgstr "Đồng hồ;Thời gian;Giờ;Báo thức;Hẹn giờ;Bấm giờ;Thế giới;Múi giờ;Clock;Time;Alarm;Timer;Stopwatch;World;Time Zone;"
 
-#: src/service/cutefish-clock-alarms.desktop
+#: src/service/properdesktop-clock-alarms.desktop
 msgid "Clock Alarms"
 msgstr "Báo thức Đồng hồ"
 

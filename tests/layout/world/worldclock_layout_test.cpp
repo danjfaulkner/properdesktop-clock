@@ -18,7 +18,7 @@
 #include "world/clockface.h"
 #include "world/worldclockpage.h"
 
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 using namespace clockapp::world;
 namespace style = clockapp::style;
 

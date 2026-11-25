@@ -8,7 +8,7 @@
 
 namespace clockapp {
 
-Spring::Spring(cutefish::ui::Window* window, double settleMs, double value)
+Spring::Spring(properdesktop::ui::Window* window, double settleMs, double value)
     : FrameClient(window)
     , m_settleMs(settleMs)
     , m_value(value)

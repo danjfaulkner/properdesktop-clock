@@ -3,8 +3,8 @@
 
 #include "style.h"
 
-using cutefish::ui::Color;
-using cutefish::ui::Theme;
+using properdesktop::ui::Color;
+using properdesktop::ui::Theme;
 
 namespace clockapp::style {
 
@@ -45,12 +45,12 @@ Color accent()
 
 Color green()
 {
-    return cutefish::ui::accent::green;
+    return properdesktop::ui::accent::green;
 }
 
 Color red()
 {
-    return cutefish::ui::accent::red;
+    return properdesktop::ui::accent::red;
 }
 
 } // namespace clockapp::style

@@ -23,7 +23,7 @@
 #include <chrono>
 
 using namespace clockapp;
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 
 // Where the vertical bar's handle reaches in the bar, top and bottom, in
 // logical pixels, with the bar always shown: the track's ends at the top
@@ -234,7 +234,7 @@ TEST_P(TimersLayout, RecentsStandAtTheStart)
     const double right = clockapp::style::windowWidth - clockapp::style::pagePadding;
     EXPECT_NEAR(picker.x + picker.width / 2, (left + right) / 2, 1);
     // The sound row's chevron ends one row inset from the card's edge.
-    auto* soundBox = fixture.driver.find<cutefish::ui::RowComboBox>("timers:sound");
+    auto* soundBox = fixture.driver.find<properdesktop::ui::RowComboBox>("timers:sound");
     ASSERT_NE(soundBox, nullptr);
     const RectF sound = fixture.driver.frame("timers:sound");
     EXPECT_NEAR(picker.right() - (sound.right() - soundBox->trailingOverhang()), 14, tolerance());

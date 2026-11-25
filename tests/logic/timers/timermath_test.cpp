@@ -105,18 +105,18 @@ TEST(TimerMath, RecentsRoundTripTheFile)
     const std::string path = dir + "/clock.conf";
     const std::vector<timermath::Recent> recents{{300000, "Tea, green | strong", "chime"}, {90000, {}, "dawn"}};
     {
-        cutefish::base::Settings settings(path);
+        properdesktop::base::Settings settings(path);
         timermath::saveRecents(settings, recents);
         settings.setValue("Timers/Other", 1);
         settings.sync();
     }
     {
-        cutefish::base::Settings settings(path);
+        properdesktop::base::Settings settings(path);
         EXPECT_EQ(timermath::loadRecents(settings), recents);
         timermath::saveRecents(settings, {});
         settings.sync();
     }
-    cutefish::base::Settings settings(path);
+    properdesktop::base::Settings settings(path);
     EXPECT_TRUE(timermath::loadRecents(settings).empty());
     EXPECT_TRUE(settings.contains("Timers/Other"));
     std::error_code error;

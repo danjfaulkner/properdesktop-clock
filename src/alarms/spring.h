@@ -13,10 +13,10 @@ namespace clockapp {
 // A value on the window's frame clock that follows its target as a
 // critically damped spring: retargeting mid-flight keeps the velocity, so
 // the motion bends rather than jumps, and frames stop once it rests.
-class Spring : public cutefish::ui::FrameClient
+class Spring : public properdesktop::ui::FrameClient
 {
 public:
-    Spring(cutefish::ui::Window* window, double settleMs, double value = 0);
+    Spring(properdesktop::ui::Window* window, double settleMs, double value = 0);
 
     double value() const { return m_value; }
     double target() const { return m_target; }

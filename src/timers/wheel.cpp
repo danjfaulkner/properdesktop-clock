@@ -17,7 +17,7 @@
 #include <cstdlib>
 #include <cstring>
 
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 
 namespace clockapp {
 

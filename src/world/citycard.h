@@ -13,7 +13,7 @@
 #include "world/sky.h"
 #include "world/zonetime.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 class Label;
 }
 
@@ -26,7 +26,7 @@ class RemoveButton;
 // time in figures. The card's top glows faintly in the colour of its sky.
 // In edit mode a remove button sits in its top left corner, concentric with
 // it.
-class CityCard : public cutefish::ui::View
+class CityCard : public properdesktop::ui::View
 {
 public:
     static constexpr double kRadius = 18;
@@ -61,22 +61,22 @@ public:
     bool removing = false;
 
     std::function<void()> onRemove;
-    std::function<bool(const cutefish::ui::KeyEvent& event)> onKey;
+    std::function<bool(const properdesktop::ui::KeyEvent& event)> onKey;
 
     std::string captionText() const;
     std::string timeText() const;
     ClockFace* face() const { return m_face; }
-    cutefish::ui::RectF removeButtonRect() const;
+    properdesktop::ui::RectF removeButtonRect() const;
     RemoveButton* removeButton() const { return m_remove; }
 
-    cutefish::ui::RectF visualRect() const override;
+    properdesktop::ui::RectF visualRect() const override;
     bool acceptsFocus() const override { return true; }
 
 protected:
     void layout() override;
-    void paint(cutefish::ui::Painter& painter) override;
-    bool keyPress(const cutefish::ui::KeyEvent& event) override;
-    void focusIn(cutefish::ui::FocusReason reason) override;
+    void paint(properdesktop::ui::Painter& painter) override;
+    bool keyPress(const properdesktop::ui::KeyEvent& event) override;
+    void focusIn(properdesktop::ui::FocusReason reason) override;
     void focusOut() override;
 
 private:
@@ -86,11 +86,11 @@ private:
     City m_city;
     uint32_t m_seed;
     ClockFace* m_face;
-    cutefish::ui::Label* m_name;
-    cutefish::ui::Label* m_caption;
-    cutefish::ui::Label* m_previousCaption;
-    cutefish::ui::Label* m_time;
-    cutefish::ui::Label* m_period;
+    properdesktop::ui::Label* m_name;
+    properdesktop::ui::Label* m_caption;
+    properdesktop::ui::Label* m_previousCaption;
+    properdesktop::ui::Label* m_time;
+    properdesktop::ui::Label* m_period;
     SpringState m_captionFade;
     Sky m_sky;
     ZoneTime m_there;

@@ -27,8 +27,8 @@
 #include <vector>
 
 using namespace clockapp;
-using namespace cutefish;
-using namespace cutefish::ui;
+using namespace properdesktop;
+using namespace properdesktop::ui;
 using namespace std::chrono_literals;
 
 // Every catalog in po/, and English for the source text.
@@ -48,15 +48,15 @@ public:
     BuiltCatalogs()
     {
         for (const char* language : kLanguages) {
-            const std::filesystem::path built = std::filesystem::path(CLOCK_CATALOGS) / language / "cutefish-clock.mo";
+            const std::filesystem::path built = std::filesystem::path(CLOCK_CATALOGS) / language / "properdesktop-clock.mo";
             if (!std::filesystem::exists(built))
                 continue;
             const std::filesystem::path folder = std::filesystem::path(m_dir.path()) / language / "LC_MESSAGES";
             std::filesystem::create_directories(folder);
-            std::filesystem::create_symlink(built, folder / "cutefish-clock.mo");
+            std::filesystem::create_symlink(built, folder / "properdesktop-clock.mo");
         }
-        i18n::setDomain("cutefish-clock");
-        bindtextdomain("cutefish-clock", m_dir.path().c_str());
+        i18n::setDomain("properdesktop-clock");
+        bindtextdomain("properdesktop-clock", m_dir.path().c_str());
     }
 
 private:

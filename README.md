@@ -1,6 +1,6 @@
 # Clock
 
-The clock of Cutefish Desktop: the time in the cities you follow, alarms,
+The clock of Proper Desktop: the time in the cities you follow, alarms,
 a stopwatch and timers, each a tab of one window.
 
 <img src="screenshots/clock.png" alt="Clock" width="799">
@@ -10,7 +10,7 @@ with the window closed and are back where they were after a restart.
 
 ## Dependencies
 
-Clock uses cutefish-toolkit; GoogleTest for the tests.
+Clock uses properdesktop-toolkit; GoogleTest for the tests.
 
 ```sh
 sudo apt install cmake libgtest-dev

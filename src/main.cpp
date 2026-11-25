@@ -14,21 +14,21 @@
 
 #include <chrono>
 
-using namespace cutefish;
+using namespace properdesktop;
 using namespace std::chrono_literals;
 
 int main(int argc, char** argv)
 {
     base::CommandLineParser parser;
-    parser.setApplicationDescription("Cutefish Clock");
+    parser.setApplicationDescription("Proper Desktop Clock");
     parser.setApplicationVersion(CLOCK_VERSION);
     parser.addHelpOption();
     parser.addVersionOption();
     parser.process(argc, argv);
 
     ui::Application app(argc, argv);
-    app.setApplicationId("cutefish-clock");
-    i18n::setDomain("cutefish-clock");
+    app.setApplicationId("properdesktop-clock");
+    i18n::setDomain("properdesktop-clock");
     auto dark = clockapp::pinDarkAppearance();
     for (const auto& [name, svg] : embeddedIcons())
         ui::Icon::registerGlyph(std::string(name), std::string(svg));

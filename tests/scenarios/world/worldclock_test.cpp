@@ -14,7 +14,7 @@
 #include "world/citydatabase.h"
 #include "world/worldclockpage.h"
 
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 using namespace clockapp::world;
 
 using List = std::vector<std::string>;
@@ -51,7 +51,7 @@ static bool settle(PageFixture& fixture, WorldClockPage* page)
 
 static List savedCities(PageFixture& fixture)
 {
-    cutefish::base::Settings settings(fixture.scratch.file("clock.conf"));
+    properdesktop::base::Settings settings(fixture.scratch.file("clock.conf"));
     return settings.stringListValue("WorldClock/Cities", {"(none)"});
 }
 

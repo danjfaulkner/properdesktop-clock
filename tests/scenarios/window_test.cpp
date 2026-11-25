@@ -10,7 +10,7 @@
 #include <chrono>
 
 using clockapp::Tab;
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 
 static const char* const kPages[] = {"page:world", "page:alarms", "page:stopwatch", "page:timers"};
 
@@ -99,7 +99,7 @@ TEST(WindowTest, TheTabIsKeptForTheNextStart)
         ASSERT_TRUE(fixture.settle());
     }
     {
-        const cutefish::base::Settings settings(dir.file("clock.conf"));
+        const properdesktop::base::Settings settings(dir.file("clock.conf"));
         EXPECT_EQ(settings.stringValue("View/Tab"), "timers");
     }
     WindowFixture fixture(1, {clockapp::style::windowWidth, clockapp::style::windowHeight}, &dir);
@@ -111,7 +111,7 @@ TEST(WindowTest, AnUnknownSavedTabOpensWorldClock)
 {
     ScratchDir dir;
     {
-        cutefish::base::Settings settings(dir.file("clock.conf"));
+        properdesktop::base::Settings settings(dir.file("clock.conf"));
         settings.setValue("View/Tab", "calendar");
     }
     WindowFixture fixture(1, {clockapp::style::windowWidth, clockapp::style::windowHeight}, &dir);

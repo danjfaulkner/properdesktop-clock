@@ -1,3 +1,0 @@
-[D-BUS Service]
-Name=org.cutefish.ClockAlarms
-Exec=@CMAKE_INSTALL_FULL_BINDIR@/cutefish-clock-alarms

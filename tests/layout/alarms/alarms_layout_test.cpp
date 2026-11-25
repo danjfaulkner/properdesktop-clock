@@ -19,10 +19,10 @@
 #include <cmath>
 
 using namespace clockapp;
-using cutefish::ui::Label;
-using cutefish::ui::RectF;
-using cutefish::ui::TestDriver;
-using cutefish::ui::View;
+using properdesktop::ui::Label;
+using properdesktop::ui::RectF;
+using properdesktop::ui::TestDriver;
+using properdesktop::ui::View;
 
 static RectF inRow(View* view, View* row)
 {
@@ -102,22 +102,22 @@ TEST(AlarmsBar, KeepsClearOfTheHeaderAndTheCorner)
         store.setAlarm(alarm);
     }
     fixture.show(makeAlarmsPage(fixture.context));
-    auto* scroll = fixture.driver.find<cutefish::ui::ScrollView>("alarms:list");
+    auto* scroll = fixture.driver.find<properdesktop::ui::ScrollView>("alarms:list");
     ASSERT_TRUE(scroll);
-    scroll->setVerticalBarPolicy(cutefish::ui::ScrollView::BarPolicy::AlwaysOn);
+    scroll->setVerticalBarPolicy(properdesktop::ui::ScrollView::BarPolicy::AlwaysOn);
     const int height = int(fixture.window.size().height);
-    const int x = int(fixture.window.size().width) - int(cutefish::ui::ScrollBar::thickness / 2);
+    const int x = int(fixture.window.size().width) - int(properdesktop::ui::ScrollBar::thickness / 2);
 
     const auto handleRows = [&](int& first, int& last) {
         fixture.driver.layout();
         // Shown once the content is known to overflow, then faded in on frames.
-        scroll->setVerticalBarPolicy(cutefish::ui::ScrollView::BarPolicy::AsNeeded);
-        scroll->setVerticalBarPolicy(cutefish::ui::ScrollView::BarPolicy::AlwaysOn);
+        scroll->setVerticalBarPolicy(properdesktop::ui::ScrollView::BarPolicy::AsNeeded);
+        scroll->setVerticalBarPolicy(properdesktop::ui::ScrollView::BarPolicy::AlwaysOn);
         for (int i = 0; i < 25; ++i) {
             fixture.driver.layout();
             TestDriver::waitFor([] { return false; }, std::chrono::milliseconds(20));
         }
-        const cutefish::ui::Bitmap shot = fixture.page->grab(1);
+        const properdesktop::ui::Bitmap shot = fixture.page->grab(1);
         const uint32_t page = shot.pixel(x - 6, height / 2);
         first = -1;
         last = -1;
@@ -139,7 +139,7 @@ TEST(AlarmsBar, KeepsClearOfTheHeaderAndTheCorner)
 
     // Against the window's right edge, one bar inset in, not inside the page's margins.
     {
-        const cutefish::ui::Bitmap shot = fixture.page->grab(1);
+        const properdesktop::ui::Bitmap shot = fixture.page->grab(1);
         const int width = int(fixture.window.size().width);
         const int y = first + 8;
         const uint32_t page = shot.pixel(x - 6, y);
@@ -149,13 +149,13 @@ TEST(AlarmsBar, KeepsClearOfTheHeaderAndTheCorner)
                 right = column;
         }
         ASSERT_GE(right, 0);
-        EXPECT_NEAR(right + 1, width - cutefish::ui::ScrollBar::inset, 1.0);
+        EXPECT_NEAR(right + 1, width - properdesktop::ui::ScrollBar::inset, 1.0);
     }
 
     scroll->setScrollPosition({0, 1e6});
     handleRows(first, last);
     ASSERT_GE(last, 0);
-    const double corner = cutefish::ui::ScrollBar::cornerPadding(cutefish::ui::Theme::current().windowRadius);
+    const double corner = properdesktop::ui::ScrollBar::cornerPadding(properdesktop::ui::Theme::current().windowRadius);
     EXPECT_LE(last, height - int(corner)) << "the handle runs into the window's corner";
 }
 

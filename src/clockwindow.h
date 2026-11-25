@@ -13,7 +13,7 @@
 #include <string>
 #include <vector>
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 class AboutDialog;
 class Animation;
 class Menu;
@@ -32,7 +32,7 @@ public:
     struct Options
     {
         PageContext::Paths paths = PageContext::defaultPaths();
-        cutefish::base::dbus::Connection* bus = nullptr;
+        properdesktop::base::dbus::Connection* bus = nullptr;
         // Off in tests, which keep away from the user's clock.conf.
         bool restoresSize = true;
     };
@@ -46,7 +46,7 @@ public:
     void show();
     void activate(const std::string& token);
 
-    cutefish::ui::Window& window() { return *m_window; }
+    properdesktop::ui::Window& window() { return *m_window; }
     PageContext& context() { return *m_context; }
     HeaderBar* headerBar() const;
     Page* page(Tab tab) const { return m_pages[size_t(tab)]; }
@@ -58,7 +58,7 @@ public:
     // Starts a timer of the store again from its full duration.
     void repeatTimer(const std::string& id);
 
-    cutefish::base::Signal<> tabChanged;
+    properdesktop::base::Signal<> tabChanged;
 
 private:
     void buildMainMenu();
@@ -69,17 +69,17 @@ private:
     void openAbout();
     void retranslate();
 
-    std::unique_ptr<cutefish::ui::Window> m_window;
+    std::unique_ptr<properdesktop::ui::Window> m_window;
     std::unique_ptr<PageContext> m_context;
     ClockRoot* m_root = nullptr;
     std::array<Page*, TabCount> m_pages {};
     Tab m_tab = Tab::WorldClock;
     Page* m_outgoing = nullptr;
     Page* m_incoming = nullptr;
-    std::unique_ptr<cutefish::ui::Animation> m_transition;
-    std::unique_ptr<cutefish::ui::Menu> m_mainMenu;
-    std::unique_ptr<cutefish::ui::AboutDialog> m_about;
-    cutefish::base::Subscription m_languageChanged;
+    std::unique_ptr<properdesktop::ui::Animation> m_transition;
+    std::unique_ptr<properdesktop::ui::Menu> m_mainMenu;
+    std::unique_ptr<properdesktop::ui::AboutDialog> m_about;
+    properdesktop::base::Subscription m_languageChanged;
 };
 
 } // namespace clockapp

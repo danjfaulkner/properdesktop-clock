@@ -14,11 +14,11 @@
 #include <string>
 #include <vector>
 
-namespace cutefish::base::dbus {
+namespace properdesktop::base::dbus {
 class Connection;
 }
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 class Window;
 }
 
@@ -41,25 +41,25 @@ public:
         std::string data;
     };
 
-    PageContext(cutefish::ui::Window& window, Paths paths, cutefish::base::dbus::Connection* bus = nullptr);
+    PageContext(properdesktop::ui::Window& window, Paths paths, properdesktop::base::dbus::Connection* bus = nullptr);
     ~PageContext();
 
     PageContext(const PageContext&) = delete;
     PageContext& operator=(const PageContext&) = delete;
 
-    // ~/.config/cutefish/clock.conf and ~/.local/share/cutefish/clock.
+    // ~/.config/properdesktop/clock.conf and ~/.local/share/properdesktop/clock.
     static Paths defaultPaths();
 
     // The window, for dialogs (ui::DialogWindow over it) and menus.
-    cutefish::ui::Window& window() const { return m_window; }
+    properdesktop::ui::Window& window() const { return m_window; }
     const Paths& paths() const { return m_paths; }
     // Null without a session bus, as in some tests.
-    cutefish::base::dbus::Connection* bus() const { return m_bus; }
+    properdesktop::base::dbus::Connection* bus() const { return m_bus; }
 
     // clock.conf, read once and shared by the window and every page: a page
     // keeps to its own group ("WorldClock/Cities", "Stopwatch/..."). Write a
     // change out with saveSettings().
-    cutefish::base::Settings& settings() { return *m_settings; }
+    properdesktop::base::Settings& settings() { return *m_settings; }
     void saveSettings();
 
     // The wall clock, which tests replace.
@@ -68,7 +68,7 @@ public:
 
     // Once a second, just after the wall clock's second changes, and when a
     // test sets the clock: what shows the time of day redraws on it.
-    cutefish::base::Signal<> tick;
+    properdesktop::base::Signal<> tick;
     void emitTick();
 
     // The page's header buttons, its New row or its Edit rows changed.
@@ -86,12 +86,12 @@ public:
 private:
     void scheduleTick();
 
-    cutefish::ui::Window& m_window;
+    properdesktop::ui::Window& m_window;
     Paths m_paths;
-    cutefish::base::dbus::Connection* m_bus;
-    std::unique_ptr<cutefish::base::Settings> m_settings;
+    properdesktop::base::dbus::Connection* m_bus;
+    std::unique_ptr<properdesktop::base::Settings> m_settings;
     Clock m_clock;
-    cutefish::base::Timer m_tickTimer;
+    properdesktop::base::Timer m_tickTimer;
     struct Shortcut
     {
         int id;

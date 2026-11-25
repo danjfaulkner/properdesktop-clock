@@ -13,7 +13,7 @@
 #include <algorithm>
 #include <cmath>
 
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 using clockapp::HeaderAction;
 using clockapp::HeaderBar;
 

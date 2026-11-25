@@ -13,10 +13,10 @@ namespace clockapp::world {
 // The page's one source of frames: woken by whatever starts to move, it calls
 // back every frame with the time since the last one and stops as soon as the
 // callback says nothing moves any more.
-class FrameDriver : public cutefish::ui::FrameClient
+class FrameDriver : public properdesktop::ui::FrameClient
 {
 public:
-    using cutefish::ui::FrameClient::FrameClient;
+    using properdesktop::ui::FrameClient::FrameClient;
 
     void wake();
     bool isRunning() const { return isTicking(); }

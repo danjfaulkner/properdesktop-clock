@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Clock Alarms
+Exec=properdesktop-clock-alarms
+TryExec=properdesktop-clock-alarms
+NoDisplay=true
+OnlyShowIn=ProperDesktop;

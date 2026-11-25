@@ -13,6 +13,6 @@ namespace clockapp {
 // in at once, before any window shows, and again in the same turn as each
 // light one, so the windows lay out and paint once, dark. Keep the
 // subscription for as long as the application runs.
-[[nodiscard]] cutefish::base::Subscription pinDarkAppearance();
+[[nodiscard]] properdesktop::base::Subscription pinDarkAppearance();
 
 } // namespace clockapp

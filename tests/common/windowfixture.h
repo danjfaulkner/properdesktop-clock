@@ -23,7 +23,7 @@ class WindowFixture
 {
 public:
     explicit WindowFixture(double scale = 1,
-                           cutefish::ui::SizeF size = {clockapp::style::windowWidth, clockapp::style::windowHeight},
+                           properdesktop::ui::SizeF size = {clockapp::style::windowWidth, clockapp::style::windowHeight},
                            const ScratchDir* shared = nullptr)
         : m_dir(shared ? shared : &m_scratch)
         , window(std::make_unique<clockapp::ClockWindow>(clockapp::ClockWindow::Options{
@@ -38,7 +38,7 @@ public:
     // Runs frames until the tab switch and the pages are at rest.
     bool settle()
     {
-        return cutefish::ui::TestDriver::waitFor([this] {
+        return properdesktop::ui::TestDriver::waitFor([this] {
             driver.layout();
             return !window->isSwitching() && !window->headerBar()->tabSwitch()->isGliding();
         });
@@ -50,5 +50,5 @@ private:
 
 public:
     std::unique_ptr<clockapp::ClockWindow> window;
-    cutefish::ui::TestDriver driver{window->window(), [](const std::string& message) { ADD_FAILURE() << message; }};
+    properdesktop::ui::TestDriver driver{window->window(), [](const std::string& message) { ADD_FAILURE() << message; }};
 };

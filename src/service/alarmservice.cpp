@@ -11,11 +11,11 @@
 #include <algorithm>
 #include <chrono>
 
-namespace dbus = cutefish::base::dbus;
-using cutefish::i18n::format;
-using cutefish::i18n::tr;
-using cutefish::i18n::trc;
-using cutefish::i18n::trn;
+namespace dbus = properdesktop::base::dbus;
+using properdesktop::i18n::format;
+using properdesktop::i18n::tr;
+using properdesktop::i18n::trc;
+using properdesktop::i18n::trn;
 
 namespace clockapp {
 
@@ -239,8 +239,8 @@ void AlarmService::notify(Ring& ring)
     std::vector<std::string> actions{"default", ""};
     if (ring.kind == Ring::Kind::Alarm) {
         summary = ring.label.empty() ? tr("Alarm") : ring.label;
-        body = cutefish::base::Locale::system().toString(cutefish::base::ClockTime{ring.hour, ring.minute},
-                                                         cutefish::base::Locale::FormatType::Short);
+        body = properdesktop::base::Locale::system().toString(properdesktop::base::ClockTime{ring.hour, ring.minute},
+                                                         properdesktop::base::Locale::FormatType::Short);
         if (ring.snooze) {
             actions.push_back("snooze");
             actions.push_back(tr("Snooze"));
@@ -260,7 +260,7 @@ void AlarmService::notify(Ring& ring)
     const dbus::VariantMap hints{
         {"urgency", dbus::Variant(uint8_t(2))},
         {"category", dbus::Variant(std::string(ring.kind == Ring::Kind::Alarm ? "alarm" : "timer"))},
-        {"desktop-entry", dbus::Variant(std::string("cutefish-clock"))},
+        {"desktop-entry", dbus::Variant(std::string("properdesktop-clock"))},
     };
 
     // The reply brings the id that the actions arrive with.
@@ -277,7 +277,7 @@ void AlarmService::notify(Ring& ring)
             it->notification = id;
         else if (id != 0)
             closeNotification(id);
-    }, std::string("Clock"), replaces, std::string("cutefish-clock"), summary, escaped(body), actions, hints,
+    }, std::string("Clock"), replaces, std::string("properdesktop-clock"), summary, escaped(body), actions, hints,
        int32_t(0));
     m_pending.push_back({std::move(call), done});
 }
@@ -347,7 +347,7 @@ void AlarmService::repeatTimer(const std::string& key)
     stop(key);
     // Only the application writes the store; the bus starts it if need be.
     if (m_bus) {
-        dbus::Proxy clock(m_bus, "org.cutefish.Clock", "/Clock", "org.cutefish.Clock");
+        dbus::Proxy clock(m_bus, "org.properdesktop.Clock", "/Clock", "org.properdesktop.Clock");
         clock.send("RepeatTimer", id);
     }
 }
@@ -356,7 +356,7 @@ void AlarmService::openClock()
 {
     if (!m_bus)
         return;
-    dbus::Proxy clock(m_bus, "org.cutefish.Clock", "/Clock", "org.cutefish.Clock");
+    dbus::Proxy clock(m_bus, "org.properdesktop.Clock", "/Clock", "org.properdesktop.Clock");
     clock.send("open", std::vector<std::string>(), std::string());
 }
 

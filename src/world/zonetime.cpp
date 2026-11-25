@@ -10,10 +10,10 @@
 
 #include "base/i18n.h"
 
-using namespace cutefish;
-using cutefish::i18n::format;
-using cutefish::i18n::tr;
-using cutefish::i18n::trn;
+using namespace properdesktop;
+using properdesktop::i18n::format;
+using properdesktop::i18n::tr;
+using properdesktop::i18n::trn;
 
 namespace clockapp::world {
 

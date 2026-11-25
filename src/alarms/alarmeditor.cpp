@@ -29,8 +29,8 @@
 #include <algorithm>
 #include <cmath>
 
-using namespace cutefish::ui;
-using cutefish::i18n::tr;
+using namespace properdesktop::ui;
+using properdesktop::i18n::tr;
 
 namespace clockapp {
 
@@ -199,13 +199,13 @@ class DayChips : public View
 public:
     DayChips(Window* window, uint8_t repeat)
     {
-        const cutefish::base::Locale& locale = cutefish::base::Locale::system();
+        const properdesktop::base::Locale& locale = properdesktop::base::Locale::system();
         const int first = locale.firstDayOfWeek();
         for (int i = 0; i < 7; ++i) {
             // 1 Monday to 7 Sunday, as the locale counts; bit 0 is Sunday.
             const int day = (first - 1 + i) % 7 + 1;
             const int bit = day % 7;
-            DayChip* chip = addChild<DayChip>(window, locale.standaloneDayName(day, cutefish::base::Locale::FormatType::Narrow),
+            DayChip* chip = addChild<DayChip>(window, locale.standaloneDayName(day, properdesktop::base::Locale::FormatType::Narrow),
                                               (repeat & (1 << bit)) != 0);
             chip->setName("editor:day" + std::to_string(bit));
             chip->setToolTip(locale.standaloneDayName(day));
@@ -297,7 +297,7 @@ AlarmEditor::AlarmEditor(Window* parent, ClockStore& store, Alarm alarm, Clock n
     content->setName("editor:content");
     content->setSpacing(12);
 
-    m_picker = content->addChild<TimePicker>(window, cutefish::base::Locale::system().usesTwentyFourHourTime() == false);
+    m_picker = content->addChild<TimePicker>(window, properdesktop::base::Locale::system().usesTwentyFourHourTime() == false);
     m_picker->setName("editor:time");
     m_picker->setLayoutHints({.fillWidth = true, .preferredHeight = m_picker->sizeHint().height});
     m_picker->setTime(m_alarm.hour, m_alarm.minute, false);
@@ -414,7 +414,7 @@ void AlarmEditor::updateCountdown()
     alarm.armedAt = now;
     const std::optional<int64_t> ring = alarmtime::nextRing(alarm, now);
     // TRANSLATORS: under the editor's time, such as "Rings in 7 hours 20 minutes".
-    m_countdown->setText(ring ? cutefish::i18n::format(tr("Rings {when}"), {{"when", alarmtime::untilText(*ring - now)}})
+    m_countdown->setText(ring ? properdesktop::i18n::format(tr("Rings {when}"), {{"when", alarmtime::untilText(*ring - now)}})
                               : std::string());
 }
 

@@ -12,7 +12,7 @@
 #include <string_view>
 #include <vector>
 
-namespace cutefish::base::dbus {
+namespace properdesktop::base::dbus {
 class Connection;
 }
 
@@ -63,7 +63,7 @@ struct ClockData
 
 namespace clockstore {
 
-// ~/.local/share/cutefish/clock/alarms.json
+// ~/.local/share/properdesktop/clock/alarms.json
 std::string defaultPath();
 // alarms.json in the folder.
 std::string pathIn(const std::string& folder);
@@ -77,11 +77,11 @@ std::optional<ClockData> parse(std::string_view text);
 const std::vector<std::string>& soundNames();
 
 // Asks the session bus to start the alarm service unless it runs.
-void ensureAlarmService(cutefish::base::dbus::Connection* bus);
+void ensureAlarmService(properdesktop::base::dbus::Connection* bus);
 
 } // namespace clockstore
 
-// The alarms and running timers. Only cutefish-clock writes the file, by
+// The alarms and running timers. Only properdesktop-clock writes the file, by
 // replacing it whole; the alarm service only reads it and follows changes.
 class ClockStore
 {
@@ -118,14 +118,14 @@ public:
     std::string setTimer(RunningTimer timer);
     void removeTimer(const std::string& id);
 
-    cutefish::base::Signal<> changed;
+    properdesktop::base::Signal<> changed;
 
 private:
     void save();
 
     std::string m_path;
     ClockData m_data;
-    cutefish::base::FileWatch m_watch;
+    properdesktop::base::FileWatch m_watch;
 };
 
 } // namespace clockapp

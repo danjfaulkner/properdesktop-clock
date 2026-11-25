@@ -53,7 +53,7 @@ struct MenuAction
 // One tab's content, filling the window below the header. The window owns
 // it, shows only the current tab's page and asks it again for its header
 // buttons and menu rows whenever it calls PageContext::actionsChanged().
-class Page : public cutefish::ui::View
+class Page : public properdesktop::ui::View
 {
 public:
     ~Page() override;

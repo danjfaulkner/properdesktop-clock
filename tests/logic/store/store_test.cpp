@@ -116,11 +116,11 @@ protected:
 
 TEST_F(StoreFileTest, WritesAndReadsBack)
 {
-    cutefish::base::EventLoop loop;
+    properdesktop::base::EventLoop loop;
     ClockStore store(clockstore::pathIn(m_folder + "/clock"));
     EXPECT_TRUE(store.alarms().empty());
     int changes = 0;
-    cutefish::base::Subscription subscription = store.changed.connect([&changes] { ++changes; });
+    properdesktop::base::Subscription subscription = store.changed.connect([&changes] { ++changes; });
 
     Alarm alarm;
     alarm.hour = 8;
@@ -149,16 +149,16 @@ TEST_F(StoreFileTest, WritesAndReadsBack)
 
 TEST_F(StoreFileTest, ReaderKeepsLastGoodContents)
 {
-    cutefish::base::EventLoop loop;
+    properdesktop::base::EventLoop loop;
     const std::string path = clockstore::pathIn(m_folder);
-    ASSERT_TRUE(cutefish::base::file::writeAtomically(path, clockstore::serialize(sample())));
+    ASSERT_TRUE(properdesktop::base::file::writeAtomically(path, clockstore::serialize(sample())));
     ClockStore reader(path);
     ASSERT_EQ(reader.alarms().size(), 2u);
 
     int changes = 0;
-    cutefish::base::Subscription subscription = reader.changed.connect([&changes] { ++changes; });
+    properdesktop::base::Subscription subscription = reader.changed.connect([&changes] { ++changes; });
     const std::string text = clockstore::serialize(sample());
-    ASSERT_TRUE(cutefish::base::file::writeAtomically(path, text.substr(0, text.size() / 2)));
+    ASSERT_TRUE(properdesktop::base::file::writeAtomically(path, text.substr(0, text.size() / 2)));
     reader.load();
     EXPECT_EQ(reader.alarms().size(), 2u);
     EXPECT_EQ(changes, 0);
@@ -172,12 +172,12 @@ TEST_F(StoreFileTest, ReaderKeepsLastGoodContents)
 
 TEST_F(StoreFileTest, WatchFollowsTheWriter)
 {
-    cutefish::base::EventLoop loop;
+    properdesktop::base::EventLoop loop;
     const std::string path = clockstore::pathIn(m_folder);
     ClockStore reader(path);
     reader.watch();
     ClockStore writer(path);
-    cutefish::base::Subscription subscription = reader.changed.connect([&loop] { loop.quit(); });
+    properdesktop::base::Subscription subscription = reader.changed.connect([&loop] { loop.quit(); });
     Alarm alarm;
     alarm.hour = 5;
     writer.setAlarm(alarm);
@@ -190,7 +190,7 @@ TEST_F(StoreFileTest, WatchFollowsTheWriter)
 
 TEST_F(StoreFileTest, SharedPerFolder)
 {
-    cutefish::base::EventLoop loop;
+    properdesktop::base::EventLoop loop;
     ClockStore& first = ClockStore::inFolder(m_folder);
     EXPECT_EQ(&first, &ClockStore::inFolder(m_folder));
     EXPECT_NE(&first, &ClockStore::inFolder(m_folder + "/other"));

@@ -9,6 +9,6 @@
 namespace clockapp::palette {
 
 // The seconds hand, a running timer's ring, Pause.
-inline constexpr cutefish::ui::Color orange = cutefish::ui::Color::rgb(0xff9f0a);
+inline constexpr properdesktop::ui::Color orange = properdesktop::ui::Color::rgb(0xff9f0a);
 
 } // namespace clockapp::palette

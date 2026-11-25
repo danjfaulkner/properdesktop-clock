@@ -8,7 +8,7 @@
 #include <string>
 #include <vector>
 
-namespace cutefish::base {
+namespace properdesktop::base {
 class Settings;
 }
 
@@ -71,8 +71,8 @@ public:
 
     // The "Stopwatch/..." keys of the file; load() moves a start made before
     // a reboot onto this boot's clock by the wall clock.
-    void save(cutefish::base::Settings& settings) const;
-    void load(const cutefish::base::Settings& settings, const Reading& now);
+    void save(properdesktop::base::Settings& settings) const;
+    void load(const properdesktop::base::Settings& settings, const Reading& now);
 
 private:
     // Time counted before the current run.

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: cutefish-clock\n"
-"Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
+"Project-Id-Version: properdesktop-clock\n"
+"Report-Msgid-Bugs-To: https://github.com/danjfaulkner\n"
 "POT-Creation-Date: 2026-11-23 23:17+0800\n"
 "PO-Revision-Date: 2026-11-21 01:08+0800\n"
 "Last-Translator: \n"
@@ -167,7 +167,7 @@ msgstr "Brilho"
 msgid "Dawn"
 msgstr "Aurora"
 
-#: src/clockwindow.cpp cutefish-clock.desktop
+#: src/clockwindow.cpp properdesktop-clock.desktop
 msgid "Clock"
 msgstr "Relógio"
 
@@ -445,15 +445,15 @@ msgstr "{hours}:{minutes} h"
 msgid "{day}, {offset}"
 msgstr "{day}, {offset}"
 
-#: cutefish-clock.desktop
+#: properdesktop-clock.desktop
 msgid "World clocks, alarms, a stopwatch and timers"
 msgstr "Relógios mundiais, alarmes, cronômetro e timers"
 
-#: cutefish-clock.desktop
+#: properdesktop-clock.desktop
 msgid "Clock;Time;Alarm;Timer;Stopwatch;World;Time Zone;"
 msgstr "Relógio;Hora;Alarme;Despertador;Timer;Temporizador;Cronômetro;Mundo;Fuso horário;"
 
-#: src/service/cutefish-clock-alarms.desktop
+#: src/service/properdesktop-clock-alarms.desktop
 msgid "Clock Alarms"
 msgstr "Alarmes do Relógio"
 

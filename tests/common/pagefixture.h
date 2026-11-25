@@ -28,7 +28,7 @@ class PageFixture
 {
 public:
     explicit PageFixture(double scale = 1,
-                         cutefish::ui::SizeF size = {clockapp::style::windowWidth, clockapp::style::windowHeight})
+                         properdesktop::ui::SizeF size = {clockapp::style::windowWidth, clockapp::style::windowHeight})
         : context(window, {scratch.file("clock.conf"), scratch.file("data")})
     {
         context.setClock([this] { return now; });
@@ -62,10 +62,10 @@ public:
     }
 
     ScratchDir scratch;
-    cutefish::ui::Window window;
+    properdesktop::ui::Window window;
     // 2026-11-20 09:41:00 UTC.
     std::chrono::system_clock::time_point now = std::chrono::system_clock::time_point(std::chrono::seconds(1795167660));
     clockapp::PageContext context;
     clockapp::Page* page = nullptr;
-    cutefish::ui::TestDriver driver{window, [](const std::string& message) { ADD_FAILURE() << message; }};
+    properdesktop::ui::TestDriver driver{window, [](const std::string& message) { ADD_FAILURE() << message; }};
 };

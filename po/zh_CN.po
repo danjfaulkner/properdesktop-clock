@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: cutefish-clock\n"
-"Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
+"Project-Id-Version: properdesktop-clock\n"
+"Report-Msgid-Bugs-To: https://github.com/danjfaulkner\n"
 "POT-Creation-Date: 2026-11-23 23:17+0800\n"
 "PO-Revision-Date: 2026-11-21 01:07+0800\n"
 "Last-Translator: \n"
@@ -161,7 +161,7 @@ msgstr "微光"
 msgid "Dawn"
 msgstr "黎明"
 
-#: src/clockwindow.cpp cutefish-clock.desktop
+#: src/clockwindow.cpp properdesktop-clock.desktop
 msgid "Clock"
 msgstr "时钟"
 
@@ -435,15 +435,15 @@ msgstr "{hours}:{minutes}小时"
 msgid "{day}, {offset}"
 msgstr "{day}，{offset}"
 
-#: cutefish-clock.desktop
+#: properdesktop-clock.desktop
 msgid "World clocks, alarms, a stopwatch and timers"
 msgstr "世界时钟、闹钟、秒表和计时器"
 
-#: cutefish-clock.desktop
+#: properdesktop-clock.desktop
 msgid "Clock;Time;Alarm;Timer;Stopwatch;World;Time Zone;"
 msgstr "Clock;Time;Alarm;Timer;Stopwatch;World;Time Zone;时钟;时间;闹钟;计时器;秒表;世界时钟;时区;"
 
-#: src/service/cutefish-clock-alarms.desktop
+#: src/service/properdesktop-clock-alarms.desktop
 msgid "Clock Alarms"
 msgstr "时钟闹钟"
 

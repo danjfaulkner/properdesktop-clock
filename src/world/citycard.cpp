@@ -15,8 +15,8 @@
 #include "world/clockface.h"
 #include "world/palette.h"
 
-using namespace cutefish;
-using namespace cutefish::ui;
+using namespace properdesktop;
+using namespace properdesktop::ui;
 
 namespace clockapp::world {
 

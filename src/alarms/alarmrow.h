@@ -11,7 +11,7 @@
 #include <memory>
 #include <string>
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 class Label;
 class Switch;
 class Window;
@@ -24,12 +24,12 @@ class Spring;
 // One alarm on the page: a card with its time large, its label and repeat
 // under it, and its switch. Switched off, the text dims; switched on, the
 // line under the time says for a moment how long until it rings.
-class AlarmRow : public cutefish::ui::View
+class AlarmRow : public properdesktop::ui::View
 {
 public:
     static constexpr double Height = 92;
 
-    AlarmRow(cutefish::ui::Window* window, std::string id);
+    AlarmRow(properdesktop::ui::Window* window, std::string id);
     ~AlarmRow() override;
 
     const std::string& id() const { return m_id; }
@@ -47,7 +47,7 @@ public:
     // "in 7 hours 20 minutes" under the time for a few seconds.
     void flashHint(const std::string& text);
 
-    cutefish::ui::SizeF sizeHint() const override { return {0, Height}; }
+    properdesktop::ui::SizeF sizeHint() const override { return {0, Height}; }
     bool acceptsPointer() const override { return true; }
     bool acceptsFocus() const override { return true; }
 
@@ -56,11 +56,11 @@ public:
 
 protected:
     void layout() override;
-    void paint(cutefish::ui::Painter& painter) override;
-    void pointerPress(const cutefish::ui::PointerEvent& event) override;
-    void pointerRelease(const cutefish::ui::PointerEvent& event) override;
-    bool keyPress(const cutefish::ui::KeyEvent& event) override;
-    void focusIn(cutefish::ui::FocusReason reason) override;
+    void paint(properdesktop::ui::Painter& painter) override;
+    void pointerPress(const properdesktop::ui::PointerEvent& event) override;
+    void pointerRelease(const properdesktop::ui::PointerEvent& event) override;
+    bool keyPress(const properdesktop::ui::KeyEvent& event) override;
+    void focusIn(properdesktop::ui::FocusReason reason) override;
     void focusOut() override;
     void hoverChanged() override;
 
@@ -70,16 +70,16 @@ private:
     std::string m_id;
     bool m_active = false;
     bool m_pressed = false;
-    cutefish::ui::Label* m_time;
-    cutefish::ui::Label* m_half;
-    cutefish::ui::Label* m_detail;
-    cutefish::ui::Label* m_hint;
-    cutefish::ui::Switch* m_switch;
+    properdesktop::ui::Label* m_time;
+    properdesktop::ui::Label* m_half;
+    properdesktop::ui::Label* m_detail;
+    properdesktop::ui::Label* m_hint;
+    properdesktop::ui::Switch* m_switch;
     // 1 on, 0 off.
     std::unique_ptr<Spring> m_light;
     // 0 the detail line, 1 the hint.
     std::unique_ptr<Spring> m_hintMix;
-    cutefish::base::Timer m_hintTimer;
+    properdesktop::base::Timer m_hintTimer;
 };
 
 } // namespace clockapp

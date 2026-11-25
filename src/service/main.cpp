@@ -14,19 +14,19 @@
 #include <string>
 #include <vector>
 
-namespace dbus = cutefish::base::dbus;
+namespace dbus = properdesktop::base::dbus;
 
-// cutefish-clock-alarms [data folder]: the folder is for tests and trial runs.
+// properdesktop-clock-alarms [data folder]: the folder is for tests and trial runs.
 int main(int argc, char** argv)
 {
-    cutefish::base::Locale::setProcessLocale();
-    cutefish::i18n::setDomain("cutefish-clock");
-    cutefish::base::EventLoop loop;
+    properdesktop::base::Locale::setProcessLocale();
+    properdesktop::i18n::setDomain("properdesktop-clock");
+    properdesktop::base::EventLoop loop;
     dbus::Connection* bus = dbus::Connection::session(&loop);
-    if (!bus || !bus->requestName("org.cutefish.ClockAlarms"))
+    if (!bus || !bus->requestName("org.properdesktop.ClockAlarms"))
         return 0;
 
-    cutefish::base::SessionLanguage language(bus);
+    properdesktop::base::SessionLanguage language(bus);
     clockapp::ClockStore store(argc > 1 ? clockapp::clockstore::pathIn(argv[1]) : clockapp::clockstore::defaultPath());
     store.watch();
     clockapp::TonePlayer player;

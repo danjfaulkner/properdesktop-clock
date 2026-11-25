@@ -15,7 +15,7 @@ class PlaceholderPage : public Page
 {
 public:
     explicit PlaceholderPage(Tab tab)
-        : m_title(addChild<cutefish::ui::Label>(tabTitle(tab)))
+        : m_title(addChild<properdesktop::ui::Label>(tabTitle(tab)))
     {
         setName(std::string("page:") + tabKey(tab));
         m_title->setFontSize(style::points(15));
@@ -25,20 +25,20 @@ public:
 protected:
     void layout() override
     {
-        const cutefish::ui::SizeF size = m_title->sizeHint();
+        const properdesktop::ui::SizeF size = m_title->sizeHint();
         m_title->setColor(style::secondaryText());
         m_title->setGeometry({style::centred(geometry().width, size.width),
                               style::centred(geometry().height + headerHeight(), size.height), size.width,
                               size.height});
     }
 
-    void paint(cutefish::ui::Painter& painter) override
+    void paint(properdesktop::ui::Painter& painter) override
     {
         painter.fillRect(localRect(), style::page());
     }
 
 private:
-    cutefish::ui::Label* m_title;
+    properdesktop::ui::Label* m_title;
 };
 
 std::unique_ptr<Page> makePage(Tab tab, PageContext& context)

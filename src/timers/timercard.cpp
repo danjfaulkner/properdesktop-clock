@@ -20,10 +20,10 @@
 #include <cmath>
 #include <ctime>
 
-using namespace cutefish::ui;
-using cutefish::i18n::format;
-using cutefish::i18n::tr;
-using cutefish::i18n::trc;
+using namespace properdesktop::ui;
+using properdesktop::i18n::format;
+using properdesktop::i18n::tr;
+using properdesktop::i18n::trc;
 
 namespace clockapp {
 
@@ -39,10 +39,10 @@ static std::string timeOfDay(int64_t ms)
     const time_t seconds = time_t(ms / 1000);
     tm local{};
     localtime_r(&seconds, &local);
-    cutefish::base::ClockTime time;
+    properdesktop::base::ClockTime time;
     time.hour = local.tm_hour;
     time.minute = local.tm_min;
-    return cutefish::base::Locale::system().toString(time, cutefish::base::Locale::FormatType::Short);
+    return properdesktop::base::Locale::system().toString(time, properdesktop::base::Locale::FormatType::Short);
 }
 
 TimerCard::TimerCard(Window* window, std::string id)

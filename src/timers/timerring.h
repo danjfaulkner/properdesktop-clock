@@ -14,12 +14,12 @@ namespace clockapp {
 // A timer's ring: a faint track, and over it the time left as an arc from
 // twelve that drains clockwise, lit at its leading end. It fills in when the
 // timer starts, dims while paused, and blooms in rings when the time is up.
-class TimerRing : public cutefish::ui::View
+class TimerRing : public properdesktop::ui::View
 {
 public:
     static constexpr double StrokeWidth = 7;
 
-    explicit TimerRing(cutefish::ui::Window* window);
+    explicit TimerRing(properdesktop::ui::Window* window);
     ~TimerRing() override;
 
     void setFraction(double fraction);
@@ -33,10 +33,10 @@ public:
     double radius() const;
 
     // The bloom and the light reach out past the ring.
-    cutefish::ui::RectF visualRect() const override;
+    properdesktop::ui::RectF visualRect() const override;
 
 protected:
-    void paint(cutefish::ui::Painter& painter) override;
+    void paint(properdesktop::ui::Painter& painter) override;
 
 private:
     double m_fraction = 1;

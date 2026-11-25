@@ -10,8 +10,8 @@
 #include <cstdio>
 #include <cstdlib>
 
-using cutefish::i18n::format;
-using cutefish::i18n::tr;
+using properdesktop::i18n::format;
+using properdesktop::i18n::tr;
 
 namespace clockapp::timermath {
 
@@ -127,7 +127,7 @@ void forget(std::vector<Recent>& recents, size_t index)
         recents.erase(recents.begin() + long(index));
 }
 
-std::vector<Recent> loadRecents(const cutefish::base::Settings& settings)
+std::vector<Recent> loadRecents(const properdesktop::base::Settings& settings)
 {
     std::vector<Recent> recents;
     for (const std::string& entry : settings.stringListValue("Timers/Recent")) {
@@ -151,7 +151,7 @@ std::vector<Recent> loadRecents(const cutefish::base::Settings& settings)
     return recents;
 }
 
-void saveRecents(cutefish::base::Settings& settings, const std::vector<Recent>& recents)
+void saveRecents(properdesktop::base::Settings& settings, const std::vector<Recent>& recents)
 {
     std::vector<std::string> entries;
     entries.reserve(recents.size());

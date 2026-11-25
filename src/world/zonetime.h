@@ -19,8 +19,8 @@ struct ZoneTime
     bool daylightSaving = false;
     // As the database abbreviates it, such as "CEST" or "+08".
     std::string abbreviation;
-    cutefish::base::CalendarDate date;
-    cutefish::base::ClockTime time;
+    properdesktop::base::CalendarDate date;
+    properdesktop::base::ClockTime time;
 
     // UTC for an unknown zone.
     static ZoneTime at(std::string_view zoneId, int64_t utcMilliseconds);
@@ -28,7 +28,7 @@ struct ZoneTime
 
 // Days from the date `here` to the date `there`: 1 when it is already
 // tomorrow there.
-int dayDifference(const cutefish::base::CalendarDate& here, const cutefish::base::CalendarDate& there);
+int dayDifference(const properdesktop::base::CalendarDate& here, const properdesktop::base::CalendarDate& there);
 // "Today", "Tomorrow", "Yesterday"; further days by count.
 std::string relativeDayText(int days);
 // The gap to the time here, as the card's caption puts it: "+8HRS",
@@ -37,11 +37,11 @@ std::string offsetText(int gapSeconds);
 // "Today, +8HRS".
 std::string captionText(int days, int gapSeconds);
 // The clock face is light from 6:00 to 17:59 there.
-bool isDaytime(const cutefish::base::ClockTime& time);
+bool isDaytime(const properdesktop::base::ClockTime& time);
 // The time in the locale's short format, which follows the 12 or 24 hour
 // choice.
-std::string digitalText(const cutefish::base::ClockTime& time,
-                        const cutefish::base::Locale& locale = cutefish::base::Locale::system());
+std::string digitalText(const properdesktop::base::ClockTime& time,
+                        const properdesktop::base::Locale& locale = properdesktop::base::Locale::system());
 
 // Clockwise from twelve, in degrees. The second hand steps; the minute and
 // hour hands move with the seconds.
@@ -51,6 +51,6 @@ struct HandAngles
     double minute = 0;
     double second = 0;
 };
-HandAngles handAngles(const cutefish::base::ClockTime& time);
+HandAngles handAngles(const properdesktop::base::ClockTime& time);
 
 } // namespace clockapp::world

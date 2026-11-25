@@ -11,13 +11,13 @@
 
 #include <string>
 
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 
 int main(int argc, char** argv)
 {
     testing::InitGoogleTest(&argc, argv);
     Application application(argc, argv, Application::Platform::Headless);
-    application.setApplicationId("cutefish-clock-tests");
+    application.setApplicationId("properdesktop-clock-tests");
     auto dark = clockapp::pinDarkAppearance();
     for (const auto& [name, svg] : embeddedIcons())
         Icon::registerGlyph(std::string(name), std::string(svg));

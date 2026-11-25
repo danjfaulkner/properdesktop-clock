@@ -126,7 +126,7 @@ std::optional<LapExtremes> Stopwatch::lapExtremes() const
     return extremes;
 }
 
-void Stopwatch::save(cutefish::base::Settings& settings) const
+void Stopwatch::save(properdesktop::base::Settings& settings) const
 {
     if (!hasTime()) {
         for (const char* key : {"Running", "Accumulated", "StartBoot", "StartWall", "BootId", "Laps"})
@@ -151,7 +151,7 @@ void Stopwatch::save(cutefish::base::Settings& settings) const
     settings.setValue("Stopwatch/Laps", laps);
 }
 
-void Stopwatch::load(const cutefish::base::Settings& settings, const Reading& now)
+void Stopwatch::load(const properdesktop::base::Settings& settings, const Reading& now)
 {
     reset();
     m_accumulatedNs = std::max<int64_t>(0, settings.intValue("Stopwatch/Accumulated"));

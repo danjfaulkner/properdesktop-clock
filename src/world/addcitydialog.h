@@ -9,7 +9,7 @@
 #include <string>
 #include <vector>
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 class DialogWindow;
 class ListView;
 class Window;
@@ -28,7 +28,7 @@ struct City;
 class AddCityDialog
 {
 public:
-    AddCityDialog(cutefish::ui::Window& parent, const CityDatabase& database, const Cities& cities,
+    AddCityDialog(properdesktop::ui::Window& parent, const CityDatabase& database, const Cities& cities,
                   std::function<int64_t()> now);
     ~AddCityDialog();
 
@@ -37,9 +37,9 @@ public:
 
     void show();
     void close();
-    cutefish::ui::Window* window() const;
+    properdesktop::ui::Window* window() const;
     // Across the whole dialog, from under the search field to its bottom edge.
-    cutefish::ui::ListView* list() const { return m_list; }
+    properdesktop::ui::ListView* list() const { return m_list; }
 
     // The cities listed for the search text, best first.
     const std::vector<const City*>& results() const { return m_results; }
@@ -59,9 +59,9 @@ private:
     const CityDatabase& m_database;
     const Cities& m_cities;
     std::function<int64_t()> m_now;
-    std::unique_ptr<cutefish::ui::DialogWindow> m_dialog;
+    std::unique_ptr<properdesktop::ui::DialogWindow> m_dialog;
     Content* m_content = nullptr;
-    cutefish::ui::ListView* m_list = nullptr;
+    properdesktop::ui::ListView* m_list = nullptr;
     std::vector<const City*> m_all;
     std::vector<const City*> m_results;
     int m_current = -1;

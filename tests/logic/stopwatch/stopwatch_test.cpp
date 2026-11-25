@@ -40,11 +40,11 @@ protected:
     Stopwatch roundTrip(const Stopwatch& stopwatch, const Reading& now)
     {
         {
-            cutefish::base::Settings settings(path());
+            properdesktop::base::Settings settings(path());
             stopwatch.save(settings);
             settings.sync();
         }
-        cutefish::base::Settings settings(path());
+        properdesktop::base::Settings settings(path());
         Stopwatch loaded;
         loaded.load(settings, now);
         return loaded;
@@ -156,14 +156,14 @@ TEST_F(StopwatchFile, KeepsAStoppedTimeAndForgetsAReset)
     EXPECT_EQ(loaded.lapCount(), 1u);
 
     {
-        cutefish::base::Settings settings(path());
+        properdesktop::base::Settings settings(path());
         settings.setValue("Stopwatch/Face", "dial");
         settings.sync();
     }
     stopwatch.reset();
     loaded = roundTrip(stopwatch, at(1000, 1000));
     EXPECT_FALSE(loaded.hasTime());
-    cutefish::base::Settings settings(path());
+    properdesktop::base::Settings settings(path());
     EXPECT_FALSE(settings.contains("Stopwatch/Running"));
     EXPECT_EQ(settings.stringValue("Stopwatch/Face"), "dial");
 }

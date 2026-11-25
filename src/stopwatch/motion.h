@@ -13,11 +13,11 @@ namespace clockapp {
 // A value that follows its target on the window's frames as a critically
 // damped spring: a new target mid-flight bends the motion without a jump,
 // and the frames stop once it has settled.
-class Glide : public cutefish::ui::FrameClient
+class Glide : public properdesktop::ui::FrameClient
 {
 public:
     // The time the spring takes to cover most of the distance.
-    explicit Glide(cutefish::ui::Window* window, double settleMs = 220, double value = 0);
+    explicit Glide(properdesktop::ui::Window* window, double settleMs = 220, double value = 0);
 
     double value() const { return m_value; }
     double target() const { return m_target; }
@@ -47,10 +47,10 @@ private:
 
 // Calls back on every frame while running, for what moves with the time
 // itself, such as a running stopwatch or a draining ring.
-class FrameTicker : public cutefish::ui::FrameClient
+class FrameTicker : public properdesktop::ui::FrameClient
 {
 public:
-    using cutefish::ui::FrameClient::FrameClient;
+    using properdesktop::ui::FrameClient::FrameClient;
 
     void setRunning(bool running);
     bool isRunning() const { return isTicking(); }

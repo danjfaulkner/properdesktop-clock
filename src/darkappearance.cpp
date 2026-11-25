@@ -5,7 +5,7 @@
 
 #include "ui/theme.h"
 
-using cutefish::ui::Theme;
+using properdesktop::ui::Theme;
 
 namespace clockapp {
 
@@ -26,7 +26,7 @@ static void applyDark()
     Theme::setCurrent(theme);
 }
 
-cutefish::base::Subscription pinDarkAppearance()
+properdesktop::base::Subscription pinDarkAppearance()
 {
     applyDark();
     return Theme::changed().connect([] { applyDark(); });

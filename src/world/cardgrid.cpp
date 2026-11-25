@@ -10,7 +10,7 @@
 #include "ui/window.h"
 #include "world/citycard.h"
 
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 
 namespace clockapp::world {
 

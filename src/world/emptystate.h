@@ -7,7 +7,7 @@
 
 #include "ui/view.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 class DialogButton;
 class Label;
 }
@@ -16,7 +16,7 @@ namespace clockapp::world {
 
 // No cities: a drawn globe, its meridians turning slowly once when the state
 // appears, over a line of text and the Add City button.
-class EmptyState : public cutefish::ui::View
+class EmptyState : public properdesktop::ui::View
 {
 public:
     EmptyState();
@@ -29,14 +29,14 @@ public:
 
 protected:
     void layout() override;
-    void paint(cutefish::ui::Painter& painter) override;
+    void paint(properdesktop::ui::Painter& painter) override;
 
 private:
-    cutefish::ui::RectF globeRect() const;
+    properdesktop::ui::RectF globeRect() const;
 
-    cutefish::ui::Label* m_title;
-    cutefish::ui::Label* m_text;
-    cutefish::ui::DialogButton* m_add;
+    properdesktop::ui::Label* m_title;
+    properdesktop::ui::Label* m_text;
+    properdesktop::ui::DialogButton* m_add;
     double m_progress = 1;
 };
 

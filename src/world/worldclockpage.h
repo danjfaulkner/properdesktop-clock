@@ -13,7 +13,7 @@
 #include "world/cities.h"
 #include "world/settle.h"
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 class HeaderBackdrop;
 class Menu;
 class ScrollView;
@@ -46,7 +46,7 @@ public:
 
     Cities& cities() { return m_cities; }
     CardGrid* grid() const { return m_grid; }
-    cutefish::ui::ScrollView* scrollView() const { return m_scroll; }
+    properdesktop::ui::ScrollView* scrollView() const { return m_scroll; }
     AddCityDialog* addCityDialog() const { return m_addCity.get(); }
     bool isEditing() const { return m_editing; }
     void setEditing(bool editing);
@@ -55,7 +55,7 @@ public:
 
 protected:
     void layout() override;
-    void paint(cutefish::ui::Painter& painter) override;
+    void paint(properdesktop::ui::Painter& painter) override;
 
 private:
     int64_t nowMilliseconds() const;
@@ -64,22 +64,22 @@ private:
     void secondTicked();
     bool frame(double elapsedMs);
     bool animates() const;
-    void showMenu(const std::string& zoneId, cutefish::ui::PointF windowPosition);
-    bool cardKey(CityCard* card, const cutefish::ui::KeyEvent& event);
+    void showMenu(const std::string& zoneId, properdesktop::ui::PointF windowPosition);
+    bool cardKey(CityCard* card, const properdesktop::ui::KeyEvent& event);
 
     PageContext& m_context;
     const CityDatabase& m_database;
     Cities m_cities;
-    cutefish::ui::ScrollView* m_scroll;
+    properdesktop::ui::ScrollView* m_scroll;
     CardGrid* m_grid;
-    cutefish::ui::HeaderBackdrop* m_backdrop;
+    properdesktop::ui::HeaderBackdrop* m_backdrop;
     EmptyState* m_empty;
     std::unique_ptr<FrameDriver> m_driver;
     std::unique_ptr<AddCityDialog> m_addCity;
-    std::unique_ptr<cutefish::ui::Menu> m_menu;
-    cutefish::base::Subscription m_tick;
-    cutefish::base::Subscription m_citiesChanged;
-    cutefish::base::Subscription m_scrolled;
+    std::unique_ptr<properdesktop::ui::Menu> m_menu;
+    properdesktop::base::Subscription m_tick;
+    properdesktop::base::Subscription m_citiesChanged;
+    properdesktop::base::Subscription m_scrolled;
     std::vector<int> m_shortcuts;
     std::string m_localZoneId;
 

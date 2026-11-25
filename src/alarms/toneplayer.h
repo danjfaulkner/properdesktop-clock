@@ -51,7 +51,7 @@ private:
 
     std::string m_sound;
     // Closes the stream once the tone is over.
-    cutefish::base::Timer m_reaper;
+    properdesktop::base::Timer m_reaper;
     pw_thread_loop* m_loop = nullptr;
     pw_stream* m_stream = nullptr;
 

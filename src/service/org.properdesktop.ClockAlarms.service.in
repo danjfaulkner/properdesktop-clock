@@ -1,0 +1,3 @@
+[D-BUS Service]
+Name=org.properdesktop.ClockAlarms
+Exec=@CMAKE_INSTALL_FULL_BINDIR@/properdesktop-clock-alarms

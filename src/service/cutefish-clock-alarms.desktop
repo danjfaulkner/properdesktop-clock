@@ -1,7 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Clock Alarms
-Exec=cutefish-clock-alarms
-TryExec=cutefish-clock-alarms
-NoDisplay=true
-OnlyShowIn=Cutefish;

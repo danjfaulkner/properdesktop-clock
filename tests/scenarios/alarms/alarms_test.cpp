@@ -16,11 +16,11 @@
 #include <functional>
 
 using namespace clockapp;
-using cutefish::ui::TestDriver;
+using properdesktop::ui::TestDriver;
 
 static void runPosted()
 {
-    cutefish::base::EventLoop& loop = cutefish::ui::Application::instance()->loop();
+    properdesktop::base::EventLoop& loop = properdesktop::ui::Application::instance()->loop();
     loop.post([&loop] { loop.quit(); });
     loop.run();
 }
@@ -28,7 +28,7 @@ static void runPosted()
 static std::unique_ptr<TestDriver> dialogOver(TestDriver& driver)
 {
     runPosted();
-    cutefish::ui::Window* window = driver.dialog();
+    properdesktop::ui::Window* window = driver.dialog();
     if (!window) {
         ADD_FAILURE() << "no dialog over the window";
         return nullptr;
@@ -86,7 +86,7 @@ TEST(AlarmsScenario, CreateToggleEditDelete)
     // Toggle off and on again.
     ASSERT_TRUE(driver.click("alarm:switch"));
     EXPECT_FALSE(store.alarms().front().enabled);
-    EXPECT_FALSE(driver.find<cutefish::ui::Switch>("alarm:switch")->isChecked());
+    EXPECT_FALSE(driver.find<properdesktop::ui::Switch>("alarm:switch")->isChecked());
     fixture.advance(std::chrono::minutes(5));
     ASSERT_TRUE(driver.click("alarm:switch"));
     EXPECT_TRUE(store.alarms().front().enabled);
@@ -130,8 +130,8 @@ TEST(AlarmsScenario, CancelClosesEditorWithoutSaving)
     std::unique_ptr<TestDriver> editor = dialogOver(driver);
     ASSERT_TRUE(editor);
     EXPECT_FALSE(editor->showsText("New Alarm"));
-    const cutefish::ui::RectF cancel = editor->frame("editor:cancel");
-    const cutefish::ui::RectF save = editor->frame("editor:save");
+    const properdesktop::ui::RectF cancel = editor->frame("editor:cancel");
+    const properdesktop::ui::RectF save = editor->frame("editor:save");
     EXPECT_GT(cancel.width, 0);
     EXPECT_LT(cancel.right(), save.x);
     ASSERT_TRUE(editor->click("editor:cancel"));
@@ -155,9 +155,9 @@ TEST(AlarmsScenario, OneTimeAlarmShowsOffOnceRung)
     fixture.show(makeAlarmsPage(fixture.context));
     TestDriver& driver = fixture.driver;
     ASSERT_TRUE(driver.shows("alarm:" + id));
-    EXPECT_TRUE(driver.find<cutefish::ui::Switch>("alarm:switch")->isChecked());
+    EXPECT_TRUE(driver.find<properdesktop::ui::Switch>("alarm:switch")->isChecked());
     fixture.advance(std::chrono::minutes(3));
-    EXPECT_FALSE(driver.find<cutefish::ui::Switch>("alarm:switch")->isChecked());
+    EXPECT_FALSE(driver.find<properdesktop::ui::Switch>("alarm:switch")->isChecked());
     // It stays in the file as it was; only its time has passed.
     EXPECT_TRUE(store.alarms().front().enabled);
 }

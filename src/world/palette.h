@@ -13,24 +13,24 @@ namespace clockapp::world {
 struct SkyPalette
 {
     // The face's dial, top to bottom.
-    cutefish::ui::Color dialTop;
-    cutefish::ui::Color dialBottom;
-    cutefish::ui::Color rim;
-    cutefish::ui::Color ticks;
-    cutefish::ui::Color numerals;
-    cutefish::ui::Color hands;
-    cutefish::ui::Color handShadow;
+    properdesktop::ui::Color dialTop;
+    properdesktop::ui::Color dialBottom;
+    properdesktop::ui::Color rim;
+    properdesktop::ui::Color ticks;
+    properdesktop::ui::Color numerals;
+    properdesktop::ui::Color hands;
+    properdesktop::ui::Color handShadow;
     // Over the card's top, fading into the card.
-    cutefish::ui::Color glow;
+    properdesktop::ui::Color glow;
     // Stars over the dial, 0 by day.
     double stars = 0;
 
     static SkyPalette of(const Sky& sky);
 };
 
-cutefish::ui::Color mix(cutefish::ui::Color a, cutefish::ui::Color b, double t);
+properdesktop::ui::Color mix(properdesktop::ui::Color a, properdesktop::ui::Color b, double t);
 
 // The second hand, the same in every sky.
-inline constexpr cutefish::ui::Color kSecondHand = cutefish::ui::Color::rgb(0xFF7A1A);
+inline constexpr properdesktop::ui::Color kSecondHand = properdesktop::ui::Color::rgb(0xFF7A1A);
 
 } // namespace clockapp::world

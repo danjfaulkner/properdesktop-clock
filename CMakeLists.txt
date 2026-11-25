@@ -3,7 +3,7 @@
 
 cmake_minimum_required(VERSION 3.16)
 
-project(cutefish-clock VERSION 1.0 LANGUAGES CXX)
+project(properdesktop-clock VERSION 1.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -11,7 +11,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 include(GNUInstallDirs)
 include(CTest)
 
-find_package(CutefishToolkit REQUIRED)
+find_package(ProperDesktopToolkit REQUIRED)
 find_package(Threads REQUIRED)
 
 # The glyphs, built in: icons/*.svg and every module's icons/<module>/*.svg,
@@ -35,7 +35,7 @@ add_library(clock-page STATIC
     ${CLOCK_EMBEDDED}
 )
 target_include_directories(clock-page PUBLIC src)
-target_link_libraries(clock-page PUBLIC Cutefish::Toolkit Threads::Threads)
+target_link_libraries(clock-page PUBLIC ProperDesktop::Toolkit Threads::Threads)
 
 # The modules, each a static library of its own when its directory has a
 # CMakeLists.txt: clock-world, clock-store, clock-alarms, clock-service,
@@ -71,12 +71,12 @@ target_link_libraries(${PROJECT_NAME} PRIVATE clock-ui)
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 
 # The alarm service calls the application (RepeatTimer, open) and starts it if need be.
-configure_file(org.cutefish.Clock.service.in ${CMAKE_CURRENT_BINARY_DIR}/org.cutefish.Clock.service @ONLY)
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/org.cutefish.Clock.service DESTINATION ${CMAKE_INSTALL_DATADIR}/dbus-1/services)
+configure_file(org.properdesktop.Clock.service.in ${CMAKE_CURRENT_BINARY_DIR}/org.properdesktop.Clock.service @ONLY)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/org.properdesktop.Clock.service DESTINATION ${CMAKE_INSTALL_DATADIR}/dbus-1/services)
 
-cutefish_add_translations(cutefish-clock SOURCES src
-    DESKTOP_FILES cutefish-clock.desktop src/service/cutefish-clock-alarms.desktop)
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/cutefish-clock.desktop DESTINATION ${CMAKE_INSTALL_DATADIR}/applications)
+properdesktop_add_translations(properdesktop-clock SOURCES src
+    DESKTOP_FILES properdesktop-clock.desktop src/service/properdesktop-clock-alarms.desktop)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/properdesktop-clock.desktop DESTINATION ${CMAKE_INSTALL_DATADIR}/applications)
 
 if(BUILD_TESTING)
     add_subdirectory(tests)

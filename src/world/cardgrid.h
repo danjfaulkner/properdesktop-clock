@@ -18,7 +18,7 @@ class CityCard;
 // place on the frame clock: added ones grow in where they land, removed
 // ones shrink away as the rest close the gap, and a card dragged out of
 // place lifts and follows the pointer while the others make room.
-class CardGrid : public cutefish::ui::View
+class CardGrid : public properdesktop::ui::View
 {
 public:
     static constexpr double kCardWidth = 171;
@@ -49,24 +49,24 @@ public:
 
     bool acceptsPointer() const override { return true; }
     double heightForWidth(double width) const override;
-    cutefish::ui::SizeF sizeHint() const override;
+    properdesktop::ui::SizeF sizeHint() const override;
 
     // Something started to move.
     std::function<void()> onMotion;
     std::function<void(const std::string& zoneId)> onRemove;
-    std::function<void(const std::string& zoneId, cutefish::ui::PointF windowPosition)> onContextMenu;
+    std::function<void(const std::string& zoneId, properdesktop::ui::PointF windowPosition)> onContextMenu;
     // A card dropped at another index.
     std::function<void(size_t from, size_t to)> onMoved;
     // Arrow keys from a card, for moving the focus.
-    std::function<bool(CityCard* card, const cutefish::ui::KeyEvent& event)> onKey;
+    std::function<bool(CityCard* card, const properdesktop::ui::KeyEvent& event)> onKey;
     // Each card made, for the page to fill.
     std::function<void(CityCard* card)> onCardMade;
 
 protected:
     void layout() override;
-    void pointerPress(const cutefish::ui::PointerEvent& event) override;
-    void pointerMove(const cutefish::ui::PointerEvent& event) override;
-    void pointerRelease(const cutefish::ui::PointerEvent& event) override;
+    void pointerPress(const properdesktop::ui::PointerEvent& event) override;
+    void pointerMove(const properdesktop::ui::PointerEvent& event) override;
+    void pointerRelease(const properdesktop::ui::PointerEvent& event) override;
 
 private:
     class DragOverlay;
@@ -80,13 +80,13 @@ private:
     std::vector<Slot> slots(size_t count, double width) const;
     void retarget(bool jump);
     void place(CityCard* card);
-    CityCard* cardAt(cutefish::ui::PointF position) const;
-    void startDrag(CityCard* card, cutefish::ui::PointF position);
-    void drag(cutefish::ui::PointF position);
+    CityCard* cardAt(properdesktop::ui::PointF position) const;
+    void startDrag(CityCard* card, properdesktop::ui::PointF position);
+    void drag(properdesktop::ui::PointF position);
     void endDrag();
     void liftToOverlay(CityCard* card);
     void landFromOverlay();
-    size_t slotAt(cutefish::ui::PointF centre) const;
+    size_t slotAt(properdesktop::ui::PointF centre) const;
     std::vector<CityCard*> staying() const;
 
     std::vector<CityCard*> m_cards;
@@ -99,8 +99,8 @@ private:
 
     CityCard* m_pressed = nullptr;
     bool m_dragging = false;
-    cutefish::ui::PointF m_pressAt;
-    cutefish::ui::PointF m_grabOffset;
+    properdesktop::ui::PointF m_pressAt;
+    properdesktop::ui::PointF m_grabOffset;
     size_t m_dragFrom = 0;
     DragOverlay* m_overlay = nullptr;
     CityCard* m_floating = nullptr;

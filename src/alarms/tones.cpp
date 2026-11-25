@@ -10,7 +10,7 @@
 #include <cmath>
 #include <numbers>
 
-using cutefish::i18n::tr;
+using properdesktop::i18n::tr;
 
 namespace clockapp::tones {
 

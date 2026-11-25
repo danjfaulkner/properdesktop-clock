@@ -16,8 +16,8 @@
 
 using namespace clockapp;
 namespace fs = std::filesystem;
-namespace base = cutefish::base;
-namespace dbus = cutefish::base::dbus;
+namespace base = properdesktop::base;
+namespace dbus = properdesktop::base::dbus;
 
 namespace {
 
@@ -168,7 +168,7 @@ TEST_F(AlarmServiceTest, DueAlarmNotifiesAndSnoozes)
     EXPECT_EQ(notification.summary, "Stand <up>");
     EXPECT_EQ(notification.actions, (std::vector<std::string>{"default", "", "snooze", "Snooze", "stop", "Stop"}));
     EXPECT_EQ(notification.hints.at("urgency").get<uint8_t>().value_or(0), 2);
-    EXPECT_EQ(notification.hints.at("desktop-entry").get<std::string>().value_or(""), "cutefish-clock");
+    EXPECT_EQ(notification.hints.at("desktop-entry").get<std::string>().value_or(""), "properdesktop-clock");
     EXPECT_EQ(notification.timeout, 0);
     EXPECT_TRUE(player.playing);
     EXPECT_EQ(player.lastSound, "chime");

@@ -15,7 +15,7 @@
 #include <string>
 #include <vector>
 
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 
 namespace clockapp {
 
@@ -52,7 +52,7 @@ TimePicker::TimePicker(Window* window, bool twelveHour)
 
     std::vector<WheelColumn> columns{hours, minutes};
     if (twelveHour) {
-        const cutefish::base::Locale& locale = cutefish::base::Locale::system();
+        const properdesktop::base::Locale& locale = properdesktop::base::Locale::system();
         WheelColumn half;
         half.name = "picker:half";
         half.values = {locale.amText(), locale.pmText()};

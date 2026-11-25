@@ -2,8 +2,8 @@
 Version=1.0
 Name=Clock
 Comment=World clocks, alarms, a stopwatch and timers
-Exec=cutefish-clock
-Icon=cutefish-clock
+Exec=properdesktop-clock
+Icon=properdesktop-clock
 Terminal=false
 Type=Application
 Categories=Utility;Clock;

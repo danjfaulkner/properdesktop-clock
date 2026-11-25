@@ -35,7 +35,7 @@ public:
     static constexpr int64_t AlarmToneMs = 10 * 60 * 1000;
     static constexpr int64_t TimerToneMs = 2 * 60 * 1000;
 
-    AlarmService(ClockStore& store, cutefish::base::dbus::Connection* bus, TonePlayer& player, Clock clock = {});
+    AlarmService(ClockStore& store, properdesktop::base::dbus::Connection* bus, TonePlayer& player, Clock clock = {});
     ~AlarmService();
 
     AlarmService(const AlarmService&) = delete;
@@ -89,11 +89,11 @@ private:
     void openClock();
 
     ClockStore& m_store;
-    cutefish::base::dbus::Connection* m_bus;
+    properdesktop::base::dbus::Connection* m_bus;
     TonePlayer& m_player;
     Clock m_clock;
-    cutefish::base::dbus::Proxy m_notifications;
-    cutefish::base::Timer m_timer;
+    properdesktop::base::dbus::Proxy m_notifications;
+    properdesktop::base::Timer m_timer;
     int64_t m_checkedMs = 0;
     // Rings already rung, "<key>@<time>", kept a day against a clock set back.
     std::map<std::string, int64_t> m_rung;
@@ -102,13 +102,13 @@ private:
     std::string m_toneKey;
     struct Pending
     {
-        cutefish::base::dbus::PendingCall call;
+        properdesktop::base::dbus::PendingCall call;
         std::shared_ptr<bool> done;
     };
     std::vector<Pending> m_pending;
-    cutefish::base::dbus::Match m_actionInvoked;
-    cutefish::base::dbus::Match m_closed;
-    cutefish::base::Subscription m_changed;
+    properdesktop::base::dbus::Match m_actionInvoked;
+    properdesktop::base::dbus::Match m_closed;
+    properdesktop::base::Subscription m_changed;
 };
 
 } // namespace clockapp

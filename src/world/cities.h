@@ -36,7 +36,7 @@ public:
     // `to` is the index the city has afterwards.
     void move(size_t from, size_t to);
 
-    cutefish::base::Signal<> changed;
+    properdesktop::base::Signal<> changed;
 
 private:
     const CityDatabase& m_database;

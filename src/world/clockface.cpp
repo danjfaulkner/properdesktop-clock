@@ -13,8 +13,8 @@
 #include "ui/path.h"
 #include "world/zonetime.h"
 
-using namespace cutefish;
-using namespace cutefish::ui;
+using namespace properdesktop;
+using namespace properdesktop::ui;
 
 namespace clockapp::world {
 
@@ -86,7 +86,7 @@ void ClockFace::setSky(const Sky& sky, uint32_t seed)
     }
 }
 
-void ClockFace::setTime(const cutefish::base::ClockTime& time, double secondStep)
+void ClockFace::setTime(const properdesktop::base::ClockTime& time, double secondStep)
 {
     if (time == m_time && secondStep == m_secondStep)
         return;

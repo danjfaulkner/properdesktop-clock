@@ -14,8 +14,8 @@
 #include "ui/path.h"
 #include "world/palette.h"
 
-using namespace cutefish::ui;
-using cutefish::i18n::tr;
+using namespace properdesktop::ui;
+using properdesktop::i18n::tr;
 
 namespace clockapp::world {
 

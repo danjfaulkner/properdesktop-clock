@@ -32,24 +32,24 @@ inline double points(double size)
     return size * 4 / 3;
 }
 
-inline cutefish::ui::Color withAlpha(cutefish::ui::Color color, double alpha)
+inline properdesktop::ui::Color withAlpha(properdesktop::ui::Color color, double alpha)
 {
     return color.withAlpha(alpha * color.a / 255.0);
 }
 
-cutefish::ui::Color text();
-cutefish::ui::Color secondaryText();
-cutefish::ui::Color separator();
+properdesktop::ui::Color text();
+properdesktop::ui::Color secondaryText();
+properdesktop::ui::Color separator();
 // The page under the header and the cards on it.
-cutefish::ui::Color page();
-cutefish::ui::Color card();
+properdesktop::ui::Color page();
+properdesktop::ui::Color card();
 // The track a control on the page or header gets.
-cutefish::ui::Color controlTint();
-cutefish::ui::Color accent();
+properdesktop::ui::Color controlTint();
+properdesktop::ui::Color accent();
 // Start buttons and running states.
-cutefish::ui::Color green();
+properdesktop::ui::Color green();
 // Stop, cancel and delete.
-cutefish::ui::Color red();
+properdesktop::ui::Color red();
 
 // On the device pixel grid of the scale.
 inline double snap(double value, double scale)

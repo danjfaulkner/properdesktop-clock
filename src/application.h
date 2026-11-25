@@ -9,7 +9,7 @@
 #include <string>
 #include <vector>
 
-namespace cutefish::base::dbus {
+namespace properdesktop::base::dbus {
 class Connection;
 class Object;
 }
@@ -21,7 +21,7 @@ namespace clockapp {
 class App
 {
 public:
-    static constexpr const char* kService = "org.cutefish.Clock";
+    static constexpr const char* kService = "org.properdesktop.Clock";
     static constexpr const char* kPath = "/Clock";
 
     App();
@@ -31,19 +31,19 @@ public:
     App& operator=(const App&) = delete;
 
     // The single instance's object, before its name is asked for.
-    void publish(cutefish::base::dbus::Connection* bus);
+    void publish(properdesktop::base::dbus::Connection* bus);
     // The dock's object, once the name is ours.
-    void publishInstance(cutefish::base::dbus::Connection* bus);
+    void publishInstance(properdesktop::base::dbus::Connection* bus);
 
     // Another launch asked for the window; Clock opens no files.
-    cutefish::base::Signal<const std::string&> activateRequested;
-    cutefish::base::Signal<> quitRequested;
+    properdesktop::base::Signal<const std::string&> activateRequested;
+    properdesktop::base::Signal<> quitRequested;
     // The alarm service's Repeat on a finished timer's notification.
-    cutefish::base::Signal<const std::string&> repeatTimerRequested;
+    properdesktop::base::Signal<const std::string&> repeatTimerRequested;
 
 private:
-    std::unique_ptr<cutefish::base::dbus::Object> m_object;
-    std::unique_ptr<cutefish::base::dbus::Object> m_instance;
+    std::unique_ptr<properdesktop::base::dbus::Object> m_object;
+    std::unique_ptr<properdesktop::base::dbus::Object> m_instance;
 };
 
 } // namespace clockapp

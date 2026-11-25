@@ -27,7 +27,7 @@
 #include <string>
 
 using namespace clockapp;
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 
 static constexpr int64_t Millisecond = 1000000;
 static constexpr int64_t Now = 1795167660000;

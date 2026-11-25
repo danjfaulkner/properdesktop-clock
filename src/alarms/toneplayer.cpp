@@ -51,7 +51,7 @@ bool TonePlayer::open()
     static std::once_flag initialized;
     std::call_once(initialized, [] { pw_init(nullptr, nullptr); });
 
-    m_loop = pw_thread_loop_new("cutefish-clock-tone", nullptr);
+    m_loop = pw_thread_loop_new("properdesktop-clock-tone", nullptr);
     if (!m_loop)
         return false;
     pw_properties* properties = pw_properties_new(
@@ -59,9 +59,9 @@ bool TonePlayer::open()
         PW_KEY_MEDIA_CATEGORY, "Playback",
         PW_KEY_MEDIA_ROLE, "Alarm",
         PW_KEY_APP_NAME, "Clock",
-        PW_KEY_APP_ID, "cutefish-clock",
-        PW_KEY_APP_ICON_NAME, "cutefish-clock",
-        PW_KEY_NODE_NAME, "cutefish-clock-tone",
+        PW_KEY_APP_ID, "properdesktop-clock",
+        PW_KEY_APP_ICON_NAME, "properdesktop-clock",
+        PW_KEY_NODE_NAME, "properdesktop-clock-tone",
         PW_KEY_NODE_LATENCY, "1024/48000",
         nullptr);
     pw_thread_loop_lock(m_loop);

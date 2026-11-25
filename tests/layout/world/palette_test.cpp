@@ -9,7 +9,7 @@
 #include "world/palette.h"
 #include "world/sky.h"
 
-using cutefish::ui::Color;
+using properdesktop::ui::Color;
 using namespace clockapp::world;
 
 static double luminance(Color color)

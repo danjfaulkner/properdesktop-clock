@@ -9,7 +9,7 @@
 
 #include <memory>
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 class ScrollView;
 }
 
@@ -44,7 +44,7 @@ public:
 
 protected:
     void layout() override;
-    void paint(cutefish::ui::Painter& painter) override;
+    void paint(properdesktop::ui::Painter& painter) override;
 
 private:
     void changed(bool lapAdded);
@@ -59,7 +59,7 @@ private:
     DigitDisplay* m_digits = nullptr;
     RoundButton* m_lapButton = nullptr;
     RoundButton* m_startButton = nullptr;
-    cutefish::ui::ScrollView* m_lapsView = nullptr;
+    properdesktop::ui::ScrollView* m_lapsView = nullptr;
     LapsList* m_laps = nullptr;
     std::unique_ptr<FrameTicker> m_ticker;
     std::vector<int> m_shortcuts;

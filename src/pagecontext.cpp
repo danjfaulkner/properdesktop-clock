@@ -13,11 +13,11 @@ using namespace std::chrono_literals;
 
 namespace clockapp {
 
-PageContext::PageContext(cutefish::ui::Window& window, Paths paths, cutefish::base::dbus::Connection* bus)
+PageContext::PageContext(properdesktop::ui::Window& window, Paths paths, properdesktop::base::dbus::Connection* bus)
     : m_window(window)
     , m_paths(std::move(paths))
     , m_bus(bus)
-    , m_settings(std::make_unique<cutefish::base::Settings>(m_paths.config))
+    , m_settings(std::make_unique<properdesktop::base::Settings>(m_paths.config))
     , m_clock([] { return std::chrono::system_clock::now(); })
 {
     m_tickTimer.setSingleShot(true);
@@ -37,10 +37,10 @@ PageContext::~PageContext()
 
 PageContext::Paths PageContext::defaultPaths()
 {
-    namespace paths = cutefish::base::paths;
+    namespace paths = properdesktop::base::paths;
     return {
-        .config = paths::cutefishConfig("clock"),
-        .data = paths::dataHome() + "/cutefish/clock",
+        .config = paths::properdesktopConfig("clock"),
+        .data = paths::dataHome() + "/properdesktop/clock",
     };
 }
 

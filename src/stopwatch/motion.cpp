@@ -7,7 +7,7 @@
 
 namespace clockapp {
 
-Glide::Glide(cutefish::ui::Window* window, double settleMs, double value)
+Glide::Glide(properdesktop::ui::Window* window, double settleMs, double value)
     : FrameClient(window)
     , m_settleMs(settleMs)
     , m_value(value)

@@ -15,7 +15,7 @@
 #include <gtest/gtest.h>
 
 using namespace clockapp;
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 
 static constexpr int64_t Millisecond = 1000000;
 

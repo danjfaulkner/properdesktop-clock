@@ -6,7 +6,7 @@
 #include <algorithm>
 #include <cmath>
 
-using cutefish::ui::Color;
+using properdesktop::ui::Color;
 
 namespace clockapp::world {
 

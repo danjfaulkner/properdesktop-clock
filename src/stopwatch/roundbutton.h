@@ -10,7 +10,7 @@
 #include <memory>
 #include <string>
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 class Label;
 }
 
@@ -19,7 +19,7 @@ namespace clockapp {
 // The round button of the stopwatch and the timers: a tinted disc with a
 // hairline ring a little inside its edge, lit from above, its title in the
 // tint. Changing the role or title cross-fades rather than jumps.
-class RoundButton : public cutefish::ui::View
+class RoundButton : public properdesktop::ui::View
 {
 public:
     enum class Role {
@@ -30,7 +30,7 @@ public:
         Pause,
     };
 
-    explicit RoundButton(cutefish::ui::Window* window, double diameter = 76);
+    explicit RoundButton(properdesktop::ui::Window* window, double diameter = 76);
     ~RoundButton() override;
 
     void setTitle(const std::string& title);
@@ -48,7 +48,7 @@ public:
     double minimumTitleSize() const;
     double titleSize() const { return m_titleSize; }
 
-    cutefish::ui::SizeF sizeHint() const override { return {m_diameter, m_diameter}; }
+    properdesktop::ui::SizeF sizeHint() const override { return {m_diameter, m_diameter}; }
     bool acceptsPointer() const override { return true; }
     bool acceptsFocus() const override { return true; }
 
@@ -56,14 +56,14 @@ public:
 
 protected:
     void layout() override;
-    void paint(cutefish::ui::Painter& painter) override;
+    void paint(properdesktop::ui::Painter& painter) override;
     void enabledChanged() override;
     void pointerEnter() override;
     void pointerLeave() override;
-    void pointerPress(const cutefish::ui::PointerEvent& event) override;
-    void pointerRelease(const cutefish::ui::PointerEvent& event) override;
-    bool keyPress(const cutefish::ui::KeyEvent& event) override;
-    void focusIn(cutefish::ui::FocusReason) override { requestPaint(); }
+    void pointerPress(const properdesktop::ui::PointerEvent& event) override;
+    void pointerRelease(const properdesktop::ui::PointerEvent& event) override;
+    bool keyPress(const properdesktop::ui::KeyEvent& event) override;
+    void focusIn(properdesktop::ui::FocusReason) override { requestPaint(); }
     void focusOut() override { requestPaint(); }
 
 private:
@@ -75,7 +75,7 @@ private:
     std::string m_title;
     Role m_role = Role::Neutral;
     Role m_previousRole = Role::Neutral;
-    cutefish::ui::Label* m_label = nullptr;
+    properdesktop::ui::Label* m_label = nullptr;
     bool m_hovered = false;
     bool m_pressed = false;
     bool m_playGlyph = false;

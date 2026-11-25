@@ -10,7 +10,7 @@
 #include <functional>
 #include <string>
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 class Label;
 }
 
@@ -22,7 +22,7 @@ class TimerRing;
 
 // One running, paused or finished timer: its ring with the time left and
 // its label inside, when it ends under that, and two buttons below.
-class TimerCard : public cutefish::ui::View
+class TimerCard : public properdesktop::ui::View
 {
 public:
     static constexpr double Width = 220;
@@ -32,7 +32,7 @@ public:
     static constexpr double RingDiameter = Width - 2 * Inset;
     static constexpr double Height = Inset + RingDiameter + 12 + ButtonDiameter + Inset;
 
-    TimerCard(cutefish::ui::Window* window, std::string id);
+    TimerCard(properdesktop::ui::Window* window, std::string id);
     ~TimerCard() override;
 
     const std::string& id() const { return m_id; }
@@ -43,8 +43,8 @@ public:
     TimerRing* ring() const { return m_ring; }
     DigitDisplay* remaining() const { return m_remaining; }
 
-    cutefish::ui::SizeF sizeHint() const override { return {Width, Height}; }
-    cutefish::ui::RectF visualRect() const override { return localRect().adjusted(-30, -30, 30, 30); }
+    properdesktop::ui::SizeF sizeHint() const override { return {Width, Height}; }
+    properdesktop::ui::RectF visualRect() const override { return localRect().adjusted(-30, -30, 30, 30); }
 
     std::function<void()> onPauseResume;
     std::function<void()> onCancel;
@@ -52,7 +52,7 @@ public:
 
 protected:
     void layout() override;
-    void paint(cutefish::ui::Painter& painter) override;
+    void paint(properdesktop::ui::Painter& painter) override;
 
 private:
     std::string m_id;
@@ -60,10 +60,10 @@ private:
     bool m_paused = false;
     int64_t m_endsAtMs = -1;
     TimerRing* m_ring = nullptr;
-    cutefish::ui::Label* m_title = nullptr;
+    properdesktop::ui::Label* m_title = nullptr;
     DigitDisplay* m_remaining = nullptr;
-    cutefish::ui::Label* m_done = nullptr;
-    cutefish::ui::Label* m_ends = nullptr;
+    properdesktop::ui::Label* m_done = nullptr;
+    properdesktop::ui::Label* m_ends = nullptr;
     RoundButton* m_cancel = nullptr;
     RoundButton* m_pause = nullptr;
 };

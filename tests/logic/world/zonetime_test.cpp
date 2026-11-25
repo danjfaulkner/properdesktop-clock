@@ -6,8 +6,8 @@
 #include "world/zonetime.h"
 
 using namespace clockapp::world;
-using cutefish::base::CalendarDate;
-using cutefish::base::ClockTime;
+using properdesktop::base::CalendarDate;
+using properdesktop::base::ClockTime;
 
 // 2026-11-20 00:00:00 UTC.
 static constexpr int64_t kNovember20 = 1795132800000;
@@ -115,14 +115,14 @@ TEST(ZoneTime, Daytime)
 
 TEST(ZoneTime, DigitalTextFollowsTheHourCycle)
 {
-    cutefish::base::RegionalPreferences preferences;
+    properdesktop::base::RegionalPreferences preferences;
     preferences.region = "GB";
     preferences.twentyFourHour = true;
-    const auto twentyFour = cutefish::base::Locale::regional("en", preferences);
+    const auto twentyFour = properdesktop::base::Locale::regional("en", preferences);
     EXPECT_EQ(digitalText({13, 5, 42}, twentyFour), "13:05");
 
     preferences.twentyFourHour = false;
-    const auto twelve = cutefish::base::Locale::regional("en", preferences);
+    const auto twelve = properdesktop::base::Locale::regional("en", preferences);
     const std::string text = digitalText({13, 5, 42}, twelve);
     EXPECT_EQ(text.find("13"), std::string::npos) << text;
     EXPECT_NE(text.find("1:05"), std::string::npos) << text;

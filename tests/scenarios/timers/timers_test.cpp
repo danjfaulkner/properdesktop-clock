@@ -19,7 +19,7 @@
 #include <cmath>
 
 using namespace clockapp;
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 using namespace std::chrono_literals;
 
 class TimersScenario : public testing::Test

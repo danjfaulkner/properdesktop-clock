@@ -14,7 +14,7 @@ add_library(clock-world-logic STATIC
 )
 target_include_directories(clock-world-logic PUBLIC ${PROJECT_SOURCE_DIR}/src)
 target_link_libraries(clock-world-logic
-    PUBLIC Cutefish::ToolkitBase
+    PUBLIC ProperDesktop::ToolkitBase
     PRIVATE PkgConfig::ClockWorldIcu)
 
 # The page.

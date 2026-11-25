@@ -13,7 +13,7 @@
 #include <string>
 #include <vector>
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 class Label;
 }
 
@@ -43,7 +43,7 @@ struct WheelColumn
 // drawn whole device pixels across and scaled in height only. Up and Down
 // step it and typed digits pick a value that reads as their number; the
 // WheelPicker around it turns it by the pointer.
-class Wheel : public cutefish::ui::View
+class Wheel : public properdesktop::ui::View
 {
 public:
     static constexpr double RowHeight = 34;
@@ -53,7 +53,7 @@ public:
     static constexpr double Radius = RowHeight / RowAngle;
     static constexpr double Height = 2 * Radius + 4;
 
-    Wheel(cutefish::ui::Window* window, WheelColumn column);
+    Wheel(properdesktop::ui::Window* window, WheelColumn column);
     ~Wheel() override;
 
     const WheelColumn& column() const { return m_column; }
@@ -64,7 +64,7 @@ public:
     void beginDrag(double y);
     void dragTo(double y);
     void endDrag(double y);
-    void scrollBy(const cutefish::ui::ScrollEvent& event);
+    void scrollBy(const properdesktop::ui::ScrollEvent& event);
 
     // A row's centre below the middle line and its height scale, at a
     // distance in rows from it; a scale of 0 past the drum's edge.
@@ -79,12 +79,12 @@ public:
 
     std::function<void()> onValueChanged;
     // Asked first for each key the focused drum gets; true takes the key.
-    std::function<bool(const cutefish::ui::KeyEvent&)> onKey;
+    std::function<bool(const properdesktop::ui::KeyEvent&)> onKey;
 
 protected:
-    void paint(cutefish::ui::Painter& painter) override;
-    bool keyPress(const cutefish::ui::KeyEvent& event) override;
-    void focusIn(cutefish::ui::FocusReason) override;
+    void paint(properdesktop::ui::Painter& painter) override;
+    bool keyPress(const properdesktop::ui::KeyEvent& event) override;
+    void focusIn(properdesktop::ui::FocusReason) override;
     void focusOut() override;
 
 private:
@@ -97,14 +97,14 @@ private:
     void settle();
     void positionChanged();
     // The values drawn once at the window's scale.
-    const cutefish::ui::RasterImage& figure(int value);
+    const properdesktop::ui::RasterImage& figure(int value);
 
     WheelColumn m_column;
     int m_value = 0;
     // In rows, unbounded when the column wraps.
     std::unique_ptr<Glide> m_position;
-    std::unique_ptr<cutefish::ui::Label> m_renderer;
-    std::vector<cutefish::ui::RasterImage> m_figures;
+    std::unique_ptr<properdesktop::ui::Label> m_renderer;
+    std::vector<properdesktop::ui::RasterImage> m_figures;
     double m_figureScale = 0;
     uint64_t m_figureGeneration = 0;
     bool m_dragging = false;
@@ -118,13 +118,13 @@ private:
 // with the units inside it. The whole card takes the pointer: a press, a
 // drag, a click on a row or a scroll turns the column under it, the units
 // and the gaps included.
-class WheelPicker : public cutefish::ui::View
+class WheelPicker : public properdesktop::ui::View
 {
 public:
     static constexpr double BandInset = 6;
     static constexpr double Padding = 14;
 
-    WheelPicker(cutefish::ui::Window* window, std::vector<WheelColumn> columns);
+    WheelPicker(properdesktop::ui::Window* window, std::vector<WheelColumn> columns);
 
     size_t columnCount() const { return m_wheels.size(); }
     Wheel* wheel(size_t column) const { return m_wheels[column]; }
@@ -133,14 +133,14 @@ public:
 
     // The band, in the picker's coordinates, and its radius: concentric
     // with the card's corners.
-    cutefish::ui::RectF bandRect() const;
+    properdesktop::ui::RectF bandRect() const;
     double bandRadius() const;
     // The column a point across the picker belongs to.
     size_t columnAt(double x) const;
     // Without the card, for a picker set on a card of its own.
     void setDrawsCard(bool draws);
 
-    cutefish::ui::SizeF sizeHint() const override;
+    properdesktop::ui::SizeF sizeHint() const override;
     bool acceptsPointer() const override { return true; }
 
     // A column's value changed.
@@ -148,23 +148,23 @@ public:
     // Asked first for each key a drum of the picker gets, before the drum's
     // own keys; true takes the key, as for typing a whole time across the
     // drums.
-    std::function<bool(const cutefish::ui::KeyEvent&)> onKey;
+    std::function<bool(const properdesktop::ui::KeyEvent&)> onKey;
 
 protected:
     void layout() override;
-    void paint(cutefish::ui::Painter& painter) override;
-    void pointerPress(const cutefish::ui::PointerEvent& event) override;
-    void pointerMove(const cutefish::ui::PointerEvent& event) override;
-    void pointerRelease(const cutefish::ui::PointerEvent& event) override;
-    bool scroll(const cutefish::ui::ScrollEvent& event) override;
-    void hoverMove(const cutefish::ui::PointerEvent& event) override;
+    void paint(properdesktop::ui::Painter& painter) override;
+    void pointerPress(const properdesktop::ui::PointerEvent& event) override;
+    void pointerMove(const properdesktop::ui::PointerEvent& event) override;
+    void pointerRelease(const properdesktop::ui::PointerEvent& event) override;
+    bool scroll(const properdesktop::ui::ScrollEvent& event) override;
+    void hoverMove(const properdesktop::ui::PointerEvent& event) override;
 
 private:
     // Each column's span across the picker.
     std::vector<std::pair<double, double>> spans() const;
 
     std::vector<Wheel*> m_wheels;
-    std::vector<cutefish::ui::Label*> m_units;
+    std::vector<properdesktop::ui::Label*> m_units;
     bool m_drawsCard = true;
     int m_dragColumn = -1;
     double m_hoverX = 0;

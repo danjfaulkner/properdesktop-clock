@@ -10,7 +10,7 @@
 #include <memory>
 #include <string>
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 class DialogButton;
 class Label;
 class RowComboBox;
@@ -33,7 +33,7 @@ class AlarmEditor
 public:
     using Clock = std::function<int64_t()>;
 
-    AlarmEditor(cutefish::ui::Window* parent, ClockStore& store, Alarm alarm, Clock now);
+    AlarmEditor(properdesktop::ui::Window* parent, ClockStore& store, Alarm alarm, Clock now);
     ~AlarmEditor();
 
     AlarmEditor(const AlarmEditor&) = delete;
@@ -41,7 +41,7 @@ public:
 
     void show();
     void close();
-    cutefish::ui::Window* window() const;
+    properdesktop::ui::Window* window() const;
 
     // The alarm saved, by its id.
     std::function<void(const std::string& id)> onSaved;
@@ -57,14 +57,14 @@ private:
     ClockStore& m_store;
     Alarm m_alarm;
     Clock m_now;
-    std::unique_ptr<cutefish::ui::Window> m_window;
+    std::unique_ptr<properdesktop::ui::Window> m_window;
     std::unique_ptr<TonePlayer> m_preview;
     TimePicker* m_picker = nullptr;
-    cutefish::ui::Label* m_countdown = nullptr;
+    properdesktop::ui::Label* m_countdown = nullptr;
     DayChips* m_days = nullptr;
-    cutefish::ui::TextField* m_label = nullptr;
-    cutefish::ui::RowComboBox* m_sound = nullptr;
-    cutefish::ui::Switch* m_snooze = nullptr;
+    properdesktop::ui::TextField* m_label = nullptr;
+    properdesktop::ui::RowComboBox* m_sound = nullptr;
+    properdesktop::ui::Switch* m_snooze = nullptr;
 };
 
 } // namespace clockapp

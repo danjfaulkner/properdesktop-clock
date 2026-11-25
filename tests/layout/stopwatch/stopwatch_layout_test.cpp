@@ -20,7 +20,7 @@
 #include <cmath>
 
 using namespace clockapp;
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 
 // Where the vertical bar's handle reaches in the bar, top and bottom, in
 // logical pixels, with the bar always shown: the track's ends at the top

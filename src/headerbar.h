@@ -11,7 +11,7 @@
 #include <memory>
 #include <vector>
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 class Animation;
 class SegmentedControl;
 }
@@ -21,7 +21,7 @@ namespace clockapp {
 // The header's tools over the window buttons' line: the tab switch centred
 // on the window, the current page's buttons at the end. It lies in a
 // ui::WindowHeader, under its buttons.
-class HeaderBar : public cutefish::ui::View
+class HeaderBar : public properdesktop::ui::View
 {
 public:
     // The gap between two plates at the end.
@@ -31,7 +31,7 @@ public:
     HeaderBar();
     ~HeaderBar() override;
 
-    cutefish::ui::SegmentedControl* tabSwitch() const { return m_tabs; }
+    properdesktop::ui::SegmentedControl* tabSwitch() const { return m_tabs; }
     // The page's buttons, faded in when the tab changed.
     void setActions(std::vector<HeaderAction> actions, bool animated);
     // Updates the header buttons for the window's active state.
@@ -39,7 +39,7 @@ public:
     // Where the plates and the switch are centred, from the header's top.
     double controlCentre() const;
     // The end buttons' area, in local coordinates, as of the last layout.
-    cutefish::ui::RectF actionsRect() const;
+    properdesktop::ui::RectF actionsRect() const;
 
 protected:
     void layout() override;
@@ -47,9 +47,9 @@ protected:
 private:
     class Actions;
 
-    cutefish::ui::SegmentedControl* m_tabs;
+    properdesktop::ui::SegmentedControl* m_tabs;
     Actions* m_actions = nullptr;
-    std::unique_ptr<cutefish::ui::Animation> m_fade;
+    std::unique_ptr<properdesktop::ui::Animation> m_fade;
 };
 
 } // namespace clockapp

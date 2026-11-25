@@ -5,7 +5,7 @@
 
 #include "ui/theme.h"
 
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 
 // The desktop in light mode with an orange accent and larger text.
 static Theme lightDesktop()

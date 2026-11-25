@@ -14,16 +14,16 @@
 #include <map>
 #include <memory>
 
-namespace json = cutefish::base::json;
-namespace dbus = cutefish::base::dbus;
+namespace json = properdesktop::base::json;
+namespace dbus = properdesktop::base::dbus;
 
 namespace clockapp {
 
-static const char* const ServiceName = "org.cutefish.ClockAlarms";
+static const char* const ServiceName = "org.properdesktop.ClockAlarms";
 
 std::string clockstore::defaultPath()
 {
-    return pathIn(cutefish::base::paths::dataHome() + "/cutefish/clock");
+    return pathIn(properdesktop::base::paths::dataHome() + "/properdesktop/clock");
 }
 
 std::string clockstore::pathIn(const std::string& folder)
@@ -158,7 +158,7 @@ void ClockStore::load()
     ClockData data;
     std::error_code error;
     if (std::filesystem::exists(m_path, error)) {
-        const std::optional<std::string> text = cutefish::base::file::read(m_path);
+        const std::optional<std::string> text = properdesktop::base::file::read(m_path);
         std::optional<ClockData> parsed = text ? clockstore::parse(*text) : std::nullopt;
         if (!parsed)
             return;
@@ -174,7 +174,7 @@ void ClockStore::watch()
 {
     std::error_code error;
     std::filesystem::create_directories(std::filesystem::path(m_path).parent_path(), error);
-    m_watch = cutefish::base::FileWatch::file(m_path, [this] { load(); });
+    m_watch = properdesktop::base::FileWatch::file(m_path, [this] { load(); });
 }
 
 const Alarm* ClockStore::alarm(const std::string& id) const
@@ -194,7 +194,7 @@ const RunningTimer* ClockStore::timer(const std::string& id) const
 std::string ClockStore::setAlarm(Alarm alarm)
 {
     if (alarm.id.empty())
-        alarm.id = cutefish::base::Uuid::generate().toString();
+        alarm.id = properdesktop::base::Uuid::generate().toString();
     const std::string id = alarm.id;
     auto it = std::find_if(m_data.alarms.begin(), m_data.alarms.end(),
                            [&id](const Alarm& other) { return other.id == id; });
@@ -215,7 +215,7 @@ void ClockStore::removeAlarm(const std::string& id)
 std::string ClockStore::setTimer(RunningTimer timer)
 {
     if (timer.id.empty())
-        timer.id = cutefish::base::Uuid::generate().toString();
+        timer.id = properdesktop::base::Uuid::generate().toString();
     const std::string id = timer.id;
     auto it = std::find_if(m_data.timers.begin(), m_data.timers.end(),
                            [&id](const RunningTimer& other) { return other.id == id; });
@@ -235,7 +235,7 @@ void ClockStore::removeTimer(const std::string& id)
 
 void ClockStore::save()
 {
-    cutefish::base::file::writeAtomically(m_path, clockstore::serialize(m_data));
+    properdesktop::base::file::writeAtomically(m_path, clockstore::serialize(m_data));
     changed.emit();
 }
 

@@ -9,7 +9,7 @@
 #include <string>
 #include <vector>
 
-namespace cutefish::base {
+namespace properdesktop::base {
 class Settings;
 }
 
@@ -59,7 +59,7 @@ void remember(std::vector<Recent>& recents, const Recent& recent);
 void forget(std::vector<Recent>& recents, size_t index);
 
 // "Timers/Recent", one "duration|sound|label" entry each.
-std::vector<Recent> loadRecents(const cutefish::base::Settings& settings);
-void saveRecents(cutefish::base::Settings& settings, const std::vector<Recent>& recents);
+std::vector<Recent> loadRecents(const properdesktop::base::Settings& settings);
+void saveRecents(properdesktop::base::Settings& settings, const std::vector<Recent>& recents);
 
 } // namespace clockapp::timermath

@@ -19,7 +19,7 @@
 #include "base/file.h"
 #include "base/locale.h"
 
-using namespace cutefish;
+using namespace properdesktop;
 
 namespace clockapp::world {
 

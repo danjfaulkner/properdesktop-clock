@@ -11,7 +11,7 @@
 #include <memory>
 #include <string>
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 class HeaderBackdrop;
 class ScrollView;
 }
@@ -43,7 +43,7 @@ public:
 
 protected:
     void layout() override;
-    void paint(cutefish::ui::Painter& painter) override;
+    void paint(properdesktop::ui::Painter& painter) override;
 
 private:
     int64_t nowMs() const;
@@ -53,14 +53,14 @@ private:
 
     PageContext& m_context;
     ClockStore& m_store;
-    cutefish::ui::ScrollView* m_scroll;
+    properdesktop::ui::ScrollView* m_scroll;
     AlarmList* m_list;
-    cutefish::ui::HeaderBackdrop* m_backdrop;
+    properdesktop::ui::HeaderBackdrop* m_backdrop;
     AlarmsEmptyState* m_empty;
     std::unique_ptr<Spring> m_emptyFade;
     std::unique_ptr<AlarmEditor> m_editor;
-    cutefish::base::Subscription m_changed;
-    cutefish::base::Subscription m_tick;
+    properdesktop::base::Subscription m_changed;
+    properdesktop::base::Subscription m_tick;
 };
 
 } // namespace clockapp

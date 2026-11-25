@@ -29,8 +29,8 @@
 #include <ctime>
 #include <numbers>
 
-using namespace cutefish::ui;
-using cutefish::i18n::tr;
+using namespace properdesktop::ui;
+using properdesktop::i18n::tr;
 
 namespace clockapp {
 
@@ -378,7 +378,7 @@ void AlarmsPage::openEditor(Alarm alarm)
     };
     m_editor->onClosed = [this] {
         // Not from inside the dialog's own callback.
-        cutefish::base::EventLoop::current()->post([this] { m_editor.reset(); });
+        properdesktop::base::EventLoop::current()->post([this] { m_editor.reset(); });
     };
     m_editor->show();
 }
@@ -411,8 +411,8 @@ void AlarmsPage::toggled(const std::string& id, bool on)
 
 static AlarmRow::Content rowContent(const Alarm& alarm, int64_t now)
 {
-    const cutefish::base::Locale& locale = cutefish::base::Locale::system();
-    const cutefish::base::ClockTime time{alarm.hour, alarm.minute};
+    const properdesktop::base::Locale& locale = properdesktop::base::Locale::system();
+    const properdesktop::base::ClockTime time{alarm.hour, alarm.minute};
     AlarmRow::Content content;
     if (locale.usesTwentyFourHourTime()) {
         content.time = locale.toString(time, "HH:mm");
@@ -424,7 +424,7 @@ static AlarmRow::Content rowContent(const Alarm& alarm, int64_t now)
     const std::string repeat = alarmtime::repeatSummary(alarm.repeat);
     if (!repeat.empty())
         // TRANSLATORS: an alarm's label and when it repeats, such as "Wake Up, Weekdays".
-        detail = cutefish::i18n::format(tr("{label}, {repeat}"), {{"label", detail}, {"repeat", repeat}});
+        detail = properdesktop::i18n::format(tr("{label}, {repeat}"), {{"label", detail}, {"repeat", repeat}});
     content.detail = detail;
     content.active = alarmtime::isActive(alarm, now);
     return content;

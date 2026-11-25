@@ -25,10 +25,10 @@
 #include "world/framedriver.h"
 #include "world/zonetime.h"
 
-using namespace cutefish;
-using namespace cutefish::ui;
-using cutefish::i18n::tr;
-using cutefish::i18n::trc;
+using namespace properdesktop;
+using namespace properdesktop::ui;
+using properdesktop::i18n::tr;
+using properdesktop::i18n::trc;
 
 namespace clockapp {
 

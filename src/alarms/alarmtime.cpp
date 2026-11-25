@@ -9,9 +9,9 @@
 #include <algorithm>
 #include <ctime>
 
-using cutefish::i18n::format;
-using cutefish::i18n::tr;
-using cutefish::i18n::trn;
+using properdesktop::i18n::format;
+using properdesktop::i18n::tr;
+using properdesktop::i18n::trn;
 
 namespace clockapp::alarmtime {
 
@@ -126,7 +126,7 @@ std::string repeatSummary(uint8_t repeat)
     if (repeat == Weekends)
         return tr("Weekends");
 
-    const cutefish::base::Locale& locale = cutefish::base::Locale::system();
+    const properdesktop::base::Locale& locale = properdesktop::base::Locale::system();
     const int first = locale.firstDayOfWeek();
     std::string text;
     for (int i = 0; i < 7; ++i) {
@@ -136,7 +136,7 @@ std::string repeatSummary(uint8_t repeat)
             continue;
         if (!text.empty())
             text += ' ';
-        text += locale.standaloneDayName(day, cutefish::base::Locale::FormatType::Short);
+        text += locale.standaloneDayName(day, properdesktop::base::Locale::FormatType::Short);
     }
     return text;
 }

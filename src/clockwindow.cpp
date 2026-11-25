@@ -24,8 +24,8 @@
 #include <algorithm>
 #include <cmath>
 
-using namespace cutefish::ui;
-using cutefish::i18n::tr;
+using namespace properdesktop::ui;
+using properdesktop::i18n::tr;
 
 namespace clockapp {
 
@@ -289,7 +289,7 @@ void ClockWindow::openAbout()
         m_about = std::make_unique<AboutDialog>(m_window.get());
         m_about->setName(tr("Clock"));
         m_about->setDescription(tr("The time around the world, alarms, a stopwatch and timers."));
-        m_about->setIconSource("cutefish-clock");
+        m_about->setIconSource("properdesktop-clock");
     }
     m_about->show();
 }

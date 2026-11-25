@@ -9,7 +9,7 @@
 #include <functional>
 #include <string>
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 class Window;
 }
 
@@ -20,10 +20,10 @@ class WheelPicker;
 // The alarm's time on the shared drums: hours and minutes, and AM/PM where
 // the locale uses a 12-hour clock. Digits typed on any drum set the whole
 // time ("7", "730", "0730", "1945"); A and P pick the half of the day.
-class TimePicker : public cutefish::ui::View
+class TimePicker : public properdesktop::ui::View
 {
 public:
-    TimePicker(cutefish::ui::Window* window, bool twelveHour);
+    TimePicker(properdesktop::ui::Window* window, bool twelveHour);
     ~TimePicker() override;
 
     int hour() const;
@@ -32,7 +32,7 @@ public:
 
     WheelPicker* wheels() const { return m_wheels; }
 
-    cutefish::ui::SizeF sizeHint() const override;
+    properdesktop::ui::SizeF sizeHint() const override;
     double heightForWidth(double) const override { return sizeHint().height; }
 
     std::function<void()> onChanged;
@@ -41,7 +41,7 @@ protected:
     void layout() override;
 
 private:
-    bool typed(const cutefish::ui::KeyEvent& event);
+    bool typed(const properdesktop::ui::KeyEvent& event);
 
     bool m_twelveHour;
     WheelPicker* m_wheels;
